@@ -1,0 +1,114 @@
+String Operations
+
+----------------------------------------------------------------------------------------------------------------------
+Types of string instructions
+
+which use a string and a destination string(MOVSB, MOVSW, MOVSD, CMPSB, CMPSW, CMPD) ---> MOVE STRING, COMPARE STRING
+which use only a source string(LODSB, LODSW, LODSD) ---> LOAD STRING
+which can use only a destintation string(STOSB, STOSW, STOSD, SCASB, SCASW, SCASD)---> STORE STRING AND SCAN STRING
+
+----------------------------------------------------------------------------------------------------------------------
+
+A string is characterized by:
+	-the type of elements(bytes or words)
+	-the address of the first element --> is a far memory adress memorised in DS:ESI --> for the source string
+									       in ES:EDI for the destination string		
+	-the parsing section -> is given by the value of the DF flag(0 from small to large, 1 to large to small addresses)
+	-the number of elements -> when needed placed in CX ECX
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+Instructions for data transfer:
+
+LODSB	The byte from the address <DS:ESI> is loaded in AL
+	If DF=0 then inc(ESI), else dec(ESI)
+
+LODSW	The word from the address <DS:ESI> is loaded in AX
+	if DF=0 then ESI:=ESI+2, else ESI:=ESI-2
+
+LODSD	The double word from the address <DS:ESI> is loaded in EAX
+	If DF=0 then ESI:=ESI+4, else ESI:=ESI-4
+
+
+STOSB	Store AL into the byte from the address <ES:EDI>
+	If DF=0 then inc(EDI), else dec(EDI)
+
+STOSW	Store AX into the word from the address <ES:EDI>
+	If DF=0 then EDI:= EDI+2, else EDI:= EDI-2
+
+STOSD	Store EAX into the double word from the address <ES:EDI>
+	If DF=0 then EDI:= EDI+4, else EDI:= EDI-4
+
+MOVSB	Store the byte from the address <DS:ESI> to the address <ES:EDI>
+	If DF=0 then inc(SI), inc(DI), else dec(SI), dec(DI)
+
+MOVSW	Store the word from the address <DS:ESI> to the address <ES:EDI>
+	If DF=0 then ESI:= ESI+2, EDI:= EDI+2, else ESI:= ESI-2, EDI:= EDI-2
+
+MOVSD	Store the double word from the address <DS:ESI> to the address <ES:EDI>
+	If DF=0 then ESI:= ESI+4, EDI:= EDI+4, else ESI:= ESI-4, EDI:= EDI-4
+
+STORE -> WORKS WITH EAX AND HIS SUBREGISTERS
+LOAD -> WORKS WITH DS:ESI AND ES:EDI
+MOV -> WORKS WITH DS:ESI AND ES:EDI
+
+ESI AND EDI ARE INCREMENTED OR DECREMENETED ACCORDINGLY BY ALL OF THE ABOVE INSTRUCTIONS
+
+----------------------------------------------------------------------------------------------------------------------
+
+Instructions for data consultation and comparison:
+SCASB	CMP AL, <ES:EDI>
+	If DF=0 Then inc(EDI), Else dec(EDI)
+
+SCASW	CMP AX, <ES:EDI>
+	If DF=0 Then EDI:= EDI+2, Else EDI:= EDI-2
+
+SCASD	CMP EAX, <ES:EDI>
+	If DF=0 Then EDI:= EDI+4, Else EDI:= EDI-4
+
+CMPSB	CMP <DS:ESI>, <ES:EDI>
+	If DF=0 Then inc(ESI), inc(EDI), Else dec(ESI), dec(EDI)
+
+CMPSW	CMP <DS:ESI>, <ES:EDI>
+	If DF=0 Then ESI:= ESI+2, EDI:= EDI+2, Else ESI:= ESI-2, EDI:= EDI-2
+
+CMPSD	CMP <DS:ESI>, <ES:EDI>
+	If DF=0 Then ESI:= ESI+4, EDI:= EDI+4, Else ESI:= ESI-4, EDI:= EDI-4
+
+
+
+COMPARE WORKS WITH DS:ESI, ES:EDI
+SCAN WORKS WITH DS:ESI AND EAX ANS HIS SUBREGISTERS
+ESI AND EDI ARE INCREMENTED OR DECREMENETED ACCORDINGLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
