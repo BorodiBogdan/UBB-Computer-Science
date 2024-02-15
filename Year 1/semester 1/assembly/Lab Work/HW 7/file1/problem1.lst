@@ -1,0 +1,87 @@
+     1                                  bits 32
+     2                                   
+     3                                  global start
+     4                                   
+     5                                  extern exit, fopen, fread, fclose, printf
+     6                                  import exit msvcrt.dll
+     7                                  import fopen msvcrt.dll
+     8                                  import fread msvcrt.dll
+     9                                  import fclose msvcrt.dll
+    10                                  import printf msvcrt.dll
+    11                                   
+    12                                      ; 
+    13                                  segment data use32 class = data
+    14 00000000 433A5C55736572735C-         filePath db "C:\Users\Bob\Documents\FMI - YEAR 1\assembly\Lab Work\HW 7\file1\test.txt", 0
+    14 00000009 426F625C446F63756D-
+    14 00000012 656E74735C464D4920-
+    14 0000001B 2D205945415220315C-
+    14 00000024 617373656D626C795C-
+    14 0000002D 4C616220576F726B5C-
+    14 00000036 485720375C66696C65-
+    14 0000003F 315C746573742E7478-
+    14 00000048 7400               
+    15 0000004A 7200                        operation db "r", 0
+    16 0000004C 6165696F754145494F-         vowels db "aeiouAEIOU"
+    16 00000055 55                 
+    17                                      vowels_len equ $ - vowels
+    18 00000056 546865726520617265-         message db "There are %d vowels: ", 0
+    18 0000005F 20256420766F77656C-
+    18 00000068 733A2000           
+    19 0000006C <res 00000004>              file_descriptor resd 1
+    20 00000070 <res 00000004>              character resb 4
+    21 00000074 00000000                    result dd 0
+    22                                   
+    23                                      ;problem 1 lab 8
+    24                                  segment code use32 class = code
+    25                                      start:
+    26 00000000 68[4A000000]                    push dword operation
+    27 00000005 68[00000000]                    push dword filePath
+    28 0000000A FF15[00000000]                  call [fopen];we open test.txt
+    29 00000010 A3[6C000000]                    mov [file_descriptor], EAX; we move the file descriptor from EAX
+    30                                          
+    31 00000015 83C408                          add ESP, 2 * 4;we empty the stack
+    32                                          ;now we need to read all characters one by one
+    33                                          
+    34                                          read_characters:
+    35 00000018 FF35[6C000000]                      push dword [file_descriptor]
+    36 0000001E 6A01                                push dword 1
+    37 00000020 6A01                                push dword 1
+    38 00000022 68[70000000]                        push dword character
+    39 00000027 FF15[00000000]                      call [fread]
+    40 0000002D 83C410                              add ESP, 4 * 4;we empty the stack
+    41                                              ;now we should have the readen character in memory at label character
+    42                                              
+    43 00000030 83F800                              CMP EAX, 0
+    44 00000033 7428                                JE final;the file is parsed or an error occured
+    45                                              
+    46 00000035 B90A000000                          MOV ECX, vowels_len;now we compare the character with all the vowels
+    47 0000003A BE[4C000000]                        MOV ESI, vowels
+    48                                              
+    49                                              verify_vowels:
+    50 0000003F 8A1E                                    mov BL, byte[esi]
+    51 00000041 3A1D[70000000]                          cmp BL, [character];here we check if the character is a vowel
+    52 00000047 7405                                    JE is_vowel;It's a vowel!
+    53                                                  
+    54 00000049 46                                      INC ESI
+    55 0000004A E2F3                                loop verify_vowels;we continue to read
+    56                                              
+    57 0000004C EBCA                                jmp read_characters
+    58                                              
+    59                                              is_vowel:
+    60 0000004E 8B1D[74000000]                         mov EBX, dword [result]
+    61 00000054 43                                     INC EBX
+    62 00000055 891D[74000000]                         MOV DWORD [result], EBX
+    63                                                 
+    64 0000005B EBBB                            jmp read_characters   
+    65                                          
+    66                                          final:
+    67                                          
+    68 0000005D FF35[74000000]                  push dword [result]
+    69 00000063 68[56000000]                    push dword message
+    70 00000068 FF15[00000000]                  call [printf]                       ; print the message
+    71 0000006E 83C408                          add esp, 4 * 2
+    72                                          
+    73                                   
+    74 00000071 6A00                            push    dword 0
+    75 00000073 FF15[00000000]                  call    [exit]
+    76                                   

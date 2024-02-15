@@ -1,0 +1,75 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, printf          
+     6                                  import exit msvcrt.dll    
+     7                                  import scanf msvcrt.dll
+     8                                  import printf msvcrt.dll
+     9                                  
+    10                                  ;18
+    11                                  segment data use32 class=data
+    12 00000000 456E74657220746865-         message1 db "Enter the number in base 10: ", 0
+    12 00000009 206E756D6265722069-
+    12 00000012 6E2062617365203130-
+    12 0000001B 3A2000             
+    13 0000001E 456E74657220746865-         message2 db "Enter the number in base 16: ", 0
+    13 00000027 206E756D6265722069-
+    13 00000030 6E2062617365203136-
+    13 00000039 3A2000             
+    14 0000003C 546865206E756D6265-         message3 db "The number of 1's of the sum of the two numbers is: %d", 0
+    14 00000045 72206F662031277320-
+    14 0000004E 6F6620746865207375-
+    14 00000057 6D206F662074686520-
+    14 00000060 74776F206E756D6265-
+    14 00000069 72732069733A202564-
+    14 00000072 00                 
+    15 00000073 256400                      format_base_10 db "%d", 0
+    16 00000076 257800                      format_base_16 db "%x", 0
+    17 00000079 00000000                    number_in_base_10 dd 0
+    18 0000007D 00000000                    number_in_base_16 dd 0
+    19 00000081 00                          number_of_ones db 0
+    20                                  
+    21                                  segment code use32 class=code
+    22                                      start:
+    23 00000000 68[00000000]                  push dword message1
+    24 00000005 FF15[00000000]                call [printf]
+    25 0000000B 83C404                        add esp, 1 * 4;we clear the stack
+    26                                        
+    27 0000000E 68[79000000]                  push number_in_base_10
+    28 00000013 68[73000000]                  push format_base_10
+    29 00000018 FF15[00000000]                call[scanf]
+    30 0000001E 83C408                        add esp, 2 * 4;we clear the stack
+    31                                        ;we read the numbr in base 10, so we need to read the number in base 16
+    32                                        
+    33 00000021 68[1E000000]                  push dword message2
+    34 00000026 FF15[00000000]                call [printf]
+    35 0000002C 83C404                        add esp, 1 * 4
+    36                                        
+    37 0000002F 68[7D000000]                  push dword number_in_base_16
+    38 00000034 68[76000000]                  push dword format_base_16
+    39 00000039 FF15[00000000]                call [scanf]
+    40 0000003F 83C408                        add esp, 2 * 4
+    41                                        ;we have read the number in base 16
+    42                                        ;now we need to compute the sum in order to find how many 1's are in the representation
+    43                                        
+    44 00000042 A1[79000000]                  mov eax, [number_in_base_10]
+    45 00000047 8B1D[7D000000]                mov ebx, [number_in_base_16]
+    46 0000004D 01D8                          add eax, ebx;we computed the sum
+    47                                        
+    48                                        while:
+    49 0000004F D1E8                            shr eax, 1
+    50 00000051 8015[81000000]00                adc byte [number_of_ones], 0
+    51 00000058 83F800                          cmp eax, 0
+    52 0000005B 75F2                          jnz while
+    53                                        ;in byte [number_of_ones] we store how many 1's we have
+    54                                          
+    55                                        
+    56 0000005D FF35[81000000]                push dword [number_of_ones]
+    57 00000063 68[3C000000]                  push dword message3
+    58 00000068 FF15[00000000]                call [printf]
+    59 0000006E 83C404                        add esp, 4 * 1
+    60                                        
+    61                                        
+    62 00000071 6A00                            push    dword 0      
+    63 00000073 FF15[00000000]                  call    [exit]
