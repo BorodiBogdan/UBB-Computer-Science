@@ -1,0 +1,11 @@
+<NotepadPlus>
+    <Session activeView="0">
+        <mainView activeIndex="3">
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1" startPos="1416" endPos="1416" selMode="0" lang="Assembly" encoding="-1" filename="C:\Users\Bob\Documents\FMI - YEAR 1\assembly\Lab Work\HW 7\console2\console2.asm" backupFilePath="" originalFileLastModifTimestamp="1704972451" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="4259909" mapWrapIndentMode="-1" mapIsWrap="no" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="6107" startPos="3085" endPos="0" selMode="0" lang="Assembly" encoding="-1" filename="C:\Users\Bob\Documents\FMI - YEAR 1\assembly\Lab Work\HW 7\file1\problem1.asm" backupFilePath="" originalFileLastModifTimestamp="1704972451" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="4259909" mapWrapIndentMode="-1" mapIsWrap="no" />
+            <File firstVisibleLine="21" xOffset="0" scrollWidth="6107" startPos="2248" endPos="0" selMode="0" lang="Assembly" encoding="-1" filename="C:\Users\Bob\Documents\FMI - YEAR 1\assembly\ASM_tools\asm_tools\npp\problema.asm" backupFilePath="" originalFileLastModifTimestamp="1702849480" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="4259909" mapWrapIndentMode="-1" mapIsWrap="no" />
+            <File firstVisibleLine="12" xOffset="0" scrollWidth="2728" startPos="711" endPos="0" selMode="0" lang="Assembly" encoding="-1" filename="C:\Users\Bob\Documents\FMI - YEAR 1\assembly\ASM_tools\asm_tools\npp\problem1file.asm" backupFilePath="" originalFileLastModifTimestamp="1707083087" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="0" mapWrapIndentMode="-1" mapIsWrap="no" />
+        </mainView>
+        <subView activeIndex="0" />
+    </Session>
+</NotepadPlus>

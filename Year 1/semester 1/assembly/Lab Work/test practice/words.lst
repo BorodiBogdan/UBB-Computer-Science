@@ -1,0 +1,175 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, fopen, fread, printf, scanf, fread, fprintf, fclose
+     5                                  
+     6                                  import fopen msvcrt.dll
+     7                                  import scanf msvcrt.dll
+     8                                  import fread msvcrt.dll
+     9                                  import printf msvcrt.dll
+    10                                  import exit msvcrt.dll
+    11                                  import fread msvcrt.dll
+    12                                  import fprintf msvcrt.dll
+    13                                  import fclose msvcrt.dll
+    14                                  
+    15                                  segment data use32 class=data
+    16 00000000 45726F617265206C61-         ErrorMessage db "Eroare la deschiderea fisierului!"
+    16 00000009 206465736368696465-
+    16 00000012 726561206669736965-
+    16 0000001B 72756C756921       
+    17 00000021 456E74657220746865-         messageForFile db "Enter the name of the file: ", 0
+    17 0000002A 206E616D65206F6620-
+    17 00000033 7468652066696C653A-
+    17 0000003C 2000               
+    18 0000003E 53756E742025642063-         nr_cuvinte db "Sunt %d cuvinte. ", 0
+    18 00000047 7576696E74652E2000 
+    19 00000050 256400                      c_format db "%d", 0
+    20 00000053 7700                        write_acces_mode  db "w", 0
+    21 00000055 7200                        read_acces_mode db "r", 0
+    22 00000057 <res 00000004>              file_descriptor resd 1
+    23 0000005B <res 00000064>              file_name resb 100
+    24 000000BF 257300                      string_format db "%s", 0
+    25 000000C2 <res 000003E8>              result resb 1000
+    26 000004AA <res 000003E8>              buffer resb 1000
+    27                                  
+    28                                  
+    29                                  segment code use32 class=code
+    30                                  open_file_for_reading:
+    31 00000000 68[55000000]                push dword read_acces_mode
+    32 00000005 68[5B000000]                push dword file_name
+    33 0000000A FF15[00000000]              call [fopen]
+    34 00000010 A3[57000000]                mov [file_descriptor], EAX
+    35 00000015 83C408                      add esp, 2 * 4
+    36                                  
+    37 00000018 C3                          ret
+    38                                  print_error:
+    39 00000019 68[00000000]                push ErrorMessage
+    40 0000001E FF15[00000000]              call [printf]
+    41 00000024 83C404                      add esp, 4 * 1
+    42 00000027 C3                          ret
+    43                                  
+    44                                  open_file_for_writing:
+    45 00000028 68[53000000]                push dword write_acces_mode
+    46 0000002D 68[5B000000]                push dword file_name
+    47 00000032 FF15[00000000]              call [fopen]
+    48 00000038 A3[57000000]                mov [file_descriptor], EAX
+    49 0000003D 83C408                      add esp, 2 * 4
+    50                                  
+    51 00000040 C3                          ret
+    52                                  
+    53                                  close_file:
+    54 00000041 FF35[57000000]              push dword [file_descriptor]
+    55 00000047 FF15[00000000]              call [fclose]
+    56 0000004D 83C404                      add esp, 4 * 1
+    57                                  
+    58 00000050 C3                          ret
+    59                                  read_from_file:
+    60 00000051 FF35[57000000]              push dword [file_descriptor]
+    61 00000057 6A64                        push 100
+    62 00000059 6A01                        push 1
+    63 0000005B 68[AA040000]                push dword buffer
+    64 00000060 FF15[00000000]              call [fread]
+    65 00000066 83C410                      add esp, 4 * 4
+    66                                  
+    67 00000069 C3                          ret
+    68                                  start:
+    69                                      ;mesaj pentru citire
+    70 0000006A 68[21000000]                push messageForFile
+    71 0000006F FF15[00000000]              call [printf] 
+    72 00000075 83C404                      add esp, 4 * 1
+    73                                  
+    74                                      ;citim numele fisierului
+    75 00000078 68[5B000000]                push dword file_name
+    76 0000007D 68[BF000000]                push dword string_format
+    77 00000082 FF15[00000000]              call [scanf]
+    78 00000088 83C408                      add esp, 4 * 2
+    79                                  
+    80                                      ;deschidem fisierul
+    81 0000008B E870FFFFFF                  call open_file_for_reading
+    82 00000090 83F800                      cmp EAX, 0
+    83 00000093 0F848E000000                jz eroare
+    84                                  
+    85                                      ;aici citim fisierul
+    86 00000099 E8B3FFFFFF                  call read_from_file
+    87                                  
+    88                                      ;we change the buffer
+    89 0000009E BE[AA040000]                mov esi, buffer
+    90                                  
+    91                                  
+    92                                      ;inlocuim _ cu spatii
+    93                                      bucla:
+    94 000000A3 803E5F                          CMP byte [esi], "_"
+    95                                  
+    96 000000A6 7402                            jz asterix_found
+    97 000000A8 EB03                            jmp asterix_not_found
+    98                                  
+    99                                          asterix_found:
+   100 000000AA C60620                              mov byte [esi],  ' '
+   101                                          asterix_not_found:
+   102                                  
+   103                                          ;while pt fiecare caracater
+   104                                  
+   105 000000AD 46                              INC ESI
+   106 000000AE 48                              DEC EAX
+   107 000000AF 83F800                          CMP EAX, 0
+   108 000000B2 75EF                        jnz bucla
+   109                                      
+   110                                      ;adaugam in fisier
+   111 000000B4 E888FFFFFF                  call close_file
+   112 000000B9 E86AFFFFFF                  call open_file_for_writing
+   113                                  
+   114 000000BE 68[AA040000]                push dword buffer
+   115 000000C3 68[BF000000]                push dword string_format
+   116 000000C8 FF35[57000000]              push dword [file_descriptor]
+   117 000000CE FF15[00000000]              call [fprintf]
+   118 000000D4 83C408                      add esp, 4 * 2
+   119                                      ;inchidem fisierul
+   120 000000D7 E865FFFFFF                  call close_file
+   121                                      
+   122 000000DC E81FFFFFFF                  call open_file_for_reading
+   123 000000E1 E86BFFFFFF                  call read_from_file
+   124                                  
+   125 000000E6 83C408                      add esp, 4 * 2
+   126                                  
+   127 000000E9 BB00000000                  MOV EBX, 0
+   128 000000EE BA00000000                  mov EDX, 0
+   129 000000F3 BE[AA040000]                MOV ESI, buffer
+   130                                  
+   131                                      While:
+   132 000000F8 803E20                          cmp byte[esi], ' '
+   133 000000FB 7402                            jz spatiu
+   134 000000FD EB07                            jmp not_spatiu
+   135                                  
+   136                                          spatiu:
+   137 000000FF BB00000000                          mov EBX, 0
+   138 00000104 EB09                                jmp nu_e_cuvant
+   139                                          not_spatiu
+   139          ******************       warning: label alone on a line without a colon might be in error [-w+orphan-labels]
+   140 00000106 43                                  INC EBX
+   141 00000107 83FB01                              CMP EBX, 1
+   142 0000010A 7402                                jz adauga_cuvant
+   143 0000010C EB01                                jmp nu_e_cuvant
+   144                                  
+   145                                              adauga_cuvant:
+   146 0000010E 42                                      INC EDX
+   147                                  
+   148                                          nu_e_cuvant:
+   149                                  
+   150 0000010F 46                              INC ESI
+   151 00000110 48                              DEC EAX
+   152 00000111 83F800                          CMP EAX, 0
+   153 00000114 75E2                        jnz While
+   154                                  
+   155                                  
+   156 00000116 52                          push EDX
+   157 00000117 68[3E000000]                push nr_cuvinte
+   158 0000011C FF15[00000000]              call[printf]
+   159 00000122 83C408                      add esp, 4 * 2
+   160                                      
+   161 00000125 EB05                        jmp nu_e_eroare
+   162                                  	eroare:
+   163 00000127 E8EDFEFFFF                      call print_error
+   164                                      nu_e_eroare:
+   165                                  
+   166 0000012C 6A00                        push dword 0 
+   167 0000012E FF15[00000000]          	call [exit] 

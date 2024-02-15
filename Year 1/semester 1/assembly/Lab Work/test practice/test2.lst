@@ -1,0 +1,35 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, isdigit, printf, isupper, strcat, strcpy, strstr
+     5                                  import exit msvcrt.dll
+     6                                  import isdigit msvcrt.dll
+     7                                  import isupper msvcrt.dll
+     8                                  import printf msvcrt.dll
+     9                                  import strcat msvcrt.dll
+    10                                  import strcpy msvcrt.dll
+    11                                  import strstr msvcrt.dll
+    12                                  
+    13                                  segment data use32 class=data
+    14 00000000 41000000                    digit dd "A"
+    15 00000004 256400                      decimal_format db "%d", 0
+    16 00000007 3132336461646100            string1 db "123dada", 0
+    17 0000000F 6461646100                  string2 db "dada", 0
+    18 00000014 <res 00000064>              testt resb 100
+    19 00000078 257300                      string_format db "%s", 0
+    20                                  
+    21                                  segment code use32 class=code
+    22                                  start:
+    23 00000000 68[0F000000]                push string2
+    24 00000005 68[07000000]                push string1
+    25 0000000A FF15[00000000]              call [strstr]
+    26 00000010 83C408                      add esp, 4 * 2      
+    27 00000013 2D[07000000]                SUB EAX, string1
+    28                                  
+    29 00000018 50                          push EAX
+    30 00000019 68[04000000]            	push decimal_format
+    31 0000001E FF15[00000000]          	call [printf]
+    32 00000024 83C408                  	add esp, 4 * 2
+    33                                  
+    34 00000027 6A00                    	push dword 0 
+    35 00000029 FF15[00000000]          	call [exit] 

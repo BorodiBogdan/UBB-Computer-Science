@@ -1,0 +1,70 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, strlen, printf, fopen, fscanf
+     5                                  import fscanf msvcrt.dll
+     6                                  import strlen msvcrt.dll
+     7                                  import printf msvcrt.dll
+     8                                  import fopen msvcrt.dll
+     9                                  import exit msvcrt.dll
+    10                                  ;14.Se da fișierul ala "preufung.txt", câte conține un text de maxim 200 caractere, 
+    11                                  ;conține litere mici, mari, spatii și puncte. 
+    12                                  ;Afiseaza pe ecran pe randuri diferite cuvintele cu nr impar de litere și sa se înlocuiască 
+    13                                  ;litera din mijloc cu spatiu
+    14                                  
+    15                                  segment data use32 class=data
+    16 00000000 70726566756E672E74-         file_name db "prefung.txt", 0
+    16 00000009 787400             
+    17 0000000C 7200                        read_acces_mode db "r", 0
+    18 0000000E 00000000                    file_descriptor dd 0
+    19 00000012 <res 00000064>              string resb 100
+    20 00000076 257300                      string_format  db "%s", 0
+    21 00000079 256400                      int_format db "%d", 0
+    22 0000007C 25730A00                    display_format db "%s", 10, 0
+    23                                  
+    24                                  segment code use32 class=code
+    25                                  start:
+    26                                      deschid_fisier:
+    27 00000000 68[0C000000]                    push read_acces_mode
+    28 00000005 68[00000000]                    push file_name
+    29 0000000A FF15[00000000]                  call [fopen]
+    30 00000010 83C408                          add esp, 4 * 2
+    31 00000013 A3[0E000000]                    mov dword[file_descriptor], EAX
+    32                                  
+    33                                      my_loop:
+    34 00000018 68[12000000]                    push string
+    35 0000001D 68[76000000]                    push string_format
+    36 00000022 FF35[0E000000]                  push dword [file_descriptor]
+    37 00000028 FF15[00000000]                  call [fscanf]
+    38 0000002E 83C40C                          add ESP, 4 * 3
+    39                                  
+    40 00000031 83F8FF                          CMP EAX, -1
+    41 00000034 743A                            je final
+    42                                  
+    43                                          ;string o sa am cuvantul citit
+    44                                  
+    45 00000036 68[12000000]                    push string
+    46 0000003B FF15[00000000]                  call [strlen];o sa returneze in eax lungime cuvantului
+    47 00000041 83C404                          add esp, 4 * 1
+    48                                  
+    49 00000044 A901000000                      TEST EAX, 1
+    50 00000049 7423                            JZ is_even
+    51 0000004B B302                                MOV BL, 2
+    52 0000004D F6F3                                DIV BL
+    53 0000004F 6698                                CBW
+    54 00000051 98                                  CWDE
+    55 00000052 C680[12000000]20                    MOV BYTE [string + EAX], ' '
+    56                                  
+    57 00000059 68[12000000]                        push string
+    58 0000005E 68[7C000000]                        push display_format
+    59 00000063 FF15[00000000]                      call [printf]
+    60 00000069 83C408                              add esp, 4 * 2
+    61 0000006C EBAA                            jmp my_loop
+    62                                          is_even:
+    63                                          
+    64 0000006E EBA8                        jmp my_loop
+    65                                      final:
+    66                                  
+    67                                  
+    68 00000070 6A00                    	push dword 0 
+    69 00000072 FF15[00000000]          	call [exit] 

@@ -1,0 +1,77 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, scanf, printf, strcmp, gets, strlen
+     5                                  import scanf msvcrt.dll
+     6                                  import exit msvcrt.dll
+     7                                  import printf msvcrt.dll
+     8                                  import getc msvcrt.dll
+     9                                  import strcmp msvcrt.dll
+    10                                  import gets msvcrt.dll
+    11                                  import strlen msvcrt.dll
+    12                                  
+    13                                  segment data use32 class=data
+    14 00000000 0A00                        newline db 10, 0
+    15 00000002 256300                      character_format db "%c", 0
+    16 00000005 257300                      string_format db "%s", 0
+    17 00000008 256400                      decimal_format db "%d", 0
+    18 0000000B <res 00000064>              character resb 100
+    19 0000006F <res 00000064>              displayed_character resb 100
+    20                                  
+    21                                  
+    22                                  segment code use32 class=code
+    23                                  start:
+    24                                  
+    25 00000000 68[0B000000]                push character
+    26 00000005 FF15[00000000]              call [gets]
+    27 0000000B 83C408                      add esp, 4 * 2
+    28                                  
+    29 0000000E BE[0B000000]                mov ESI, character
+    30                                  
+    31 00000013 6880841E00                  push dword 2000000
+    32                                  
+    33                                      my_loop:
+    34 00000018 B800000000                      mov EAX, 0
+    35 0000001D 8A06                            mov AL, byte[ESI]
+    36                                  
+    37 0000001F 83F800                          cmp EAX, 0
+    38 00000022 740C                            JE aici
+    39                                          
+    40 00000024 83F820                          cmp EAX, ' '
+    41 00000027 7401                            JE dupa
+    42 00000029 50                              push EAX
+    43                                          dupa:
+    44 0000002A 46                              INC ESI
+    45                                  
+    46 0000002B 83F820                          cmp EAX, ' '
+    47 0000002E 75E8                            jne my_loop
+    48                                          aici:
+    49                                  
+    50 00000030 BF[6F000000]                    mov EDI, displayed_character
+    51                                          
+    52                                          my_loop2:
+    53 00000035 58                                  POP EAX
+    54 00000036 3D80841E00                          cmp EAX, 2000000
+    55 0000003B 7405                                JE e_gata
+    56 0000003D 8807                                mov byte[EDI], AL
+    57 0000003F 47                                  INC EDI
+    58 00000040 EBF3                            jmp my_loop2
+    59                                          e_gata:    
+    60 00000042 C60720                              MOV byte[EDI], ' '
+    61 00000045 C6470100                            mov byte[EDI + 1], 0
+    62 00000049 68[6F000000]                        push displayed_character
+    63 0000004E 68[05000000]                        push string_format
+    64 00000053 FF15[00000000]                      call[printf]
+    65 00000059 83C408                              add esp, 4 * 2
+    66                                              
+    67 0000005C 803E00                          cmp byte [ESI], 0
+    68 0000005F 7407                            je final
+    69                                  
+    70 00000061 6880841E00                      push dword 2000000
+    71                                  
+    72 00000066 EBB0                        jmp my_loop
+    73                                      final:
+    74                                  
+    75                                  
+    76 00000068 6A00                    	push dword 0 
+    77 0000006A FF15[00000000]          	call [exit] 

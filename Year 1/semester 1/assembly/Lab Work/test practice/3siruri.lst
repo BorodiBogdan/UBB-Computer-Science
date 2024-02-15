@@ -1,0 +1,126 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, fprintf, fopen, fscanf, fclose, printf
+     5                                  
+     6                                  import exit msvcrt.dll
+     7                                  import fopen msvcrt.dll
+     8                                  import fscanf msvcrt.dll
+     9                                  import fprintf msvcrt.dll
+    10                                  import fclose msvcrt.dll
+    11                                  import printf msvcrt.dll
+    12                                  
+    13                                  ;6.Se citesc din fisierul numere.txt mai multe numere (pare si impare).
+    14                                  ;Sa se creeze 2 siruri rezultat N si P astfel: N - doar numere impare si 
+    15                                  ;P - doar numere pare. Afisati cele 2 siruri rezultate pe ecran.
+    16                                  
+    17                                  segment data use32 class=data
+    18 00000000 7200                        acces_mode db "r", 0
+    19 00000002 7700                        writing_acces_mode db "w", 0
+    20 00000004 746573742E74787400          file_path db "test.txt", 0
+    21 0000000D 726573756C742E7478-         new_file_path db "result.txt", 0
+    21 00000016 7400               
+    22 00000018 256400                      decimal_format db "%d", 0
+    23 0000001B 25642000                    print_format db "%d ", 0
+    24 0000001F 257300                      string_format db "%s", 0
+    25 00000022 0A00                        new_line db 10, 0
+    26 00000024 <res 00000004>              file_descriptor resd 1
+    27 00000028 <res 000003E8>              sir_n resb 1000
+    28 00000410 <res 000003E8>              sir_p resb 1000
+    29 000007F8 <res 00000004>              number resd 1
+    30 000007FC <res 00000004>              displayed_array resb 4
+    31                                  
+    32                                  segment code use32 class=code
+    33                                  open_file:
+    34 00000000 68[00000000]                push acces_mode
+    35 00000005 68[04000000]                push file_path
+    36 0000000A FF15[00000000]              call [fopen]
+    37 00000010 A3[24000000]                mov dword[file_descriptor], EAX
+    38 00000015 83C408                      add ESP, 4 * 2
+    39                                  
+    40 00000018 C3                          ret
+    41                                  read_file:
+    42 00000019 BE[28000000]                mov ESI, sir_n
+    43 0000001E BF[10040000]                mov EDI, sir_p
+    44 00000023 B900000000                  mov ECX, 0
+    45 00000028 BA00000000                  MOV EDX, 0
+    46                                  
+    47                                      read_numbers:
+    48 0000002D 68[F8070000]                    push number
+    49 00000032 68[18000000]                    push decimal_format
+    50 00000037 FF35[24000000]                  push dword[file_descriptor]
+    51 0000003D FF15[00000000]                  call [fscanf]
+    52 00000043 83C40C                          add ESP, 4 * 3
+    53 00000046 83F8FF                          cmp EAX, -1
+    54 00000049 741A                            je final
+    55                                  
+    56 0000004B A1[F8070000]                    mov EAX, dword [number]
+    57 00000050 A901000000                      TEST EAX, 1
+    58                                  
+    59 00000055 7407                            jz e_par
+    60 00000057 8906                                MOV [ESI], EAX
+    61 00000059 83C604                              ADD ESI, 4
+    62 0000005C EBCF                                jmp read_numbers
+    63                                          e_par:
+    64 0000005E 8907                                MOV [EDI], EAX
+    65 00000060 83C704                              ADD EDI, 4
+    66                                  
+    67 00000063 EBC8                        jmp read_numbers
+    68                                  
+    69                                      final:
+    70 00000065 B800943577                  mov EAX, 2000000000
+    71 0000006A 8907                        mov [EDI], EAX
+    72 0000006C 8906                        mov [ESI], EAX
+    73 0000006E C3                          ret
+    74                                  print_numbers:
+    75 0000006F 8B742404                    MOV ESI, [ESP + 4]
+    76                                  
+    77                                      my_loop:
+    78 00000073 813E00943577                    cmp dword[ESI], 2000000000
+    79 00000079 741B                            je e_gata
+    80 0000007B FF36                            push dword[ESI]
+    81 0000007D 68[1B000000]                    push print_format
+    82 00000082 FF35[24000000]                  push dword [file_descriptor]
+    83 00000088 FF15[00000000]                  call [fprintf]
+    84 0000008E 83C40C                          add ESP, 4 * 3
+    85 00000091 83C604                          ADD ESI, 4
+    86 00000094 EBDD                        jmp my_loop
+    87                                      e_gata:
+    88                                  
+    89 00000096 68[22000000]                push new_line
+    90 0000009B 68[1F000000]                push string_format
+    91 000000A0 FF35[24000000]              push dword [file_descriptor]
+    92 000000A6 FF15[00000000]              call [fprintf]
+    93 000000AC 83C40C                      add esp, 4 * 3
+    94                                  
+    95 000000AF C3                          ret
+    96                                      
+    97                                  start:
+    98 000000B0 E84BFFFFFF                  call open_file
+    99 000000B5 E85FFFFFFF                  call read_file
+   100                                  
+   101 000000BA FF35[24000000]              push dword [file_descriptor]
+   102 000000C0 FF15[00000000]              call [fclose]
+   103 000000C6 83C404                      add ESP, 4; inchidem fisierul
+   104                                      
+   105 000000C9 68[02000000]                push writing_acces_mode
+   106 000000CE 68[0D000000]                push new_file_path
+   107 000000D3 FF15[00000000]              call [fopen]
+   108 000000D9 83C408                      add ESP, 4 * 2
+   109 000000DC A3[24000000]                MOV [file_descriptor], EAX;deschidem pt afisare
+   110                                  
+   111 000000E1 FF35[10040000]              push dword[sir_p]
+   112 000000E7 68[1B000000]                push print_format
+   113 000000EC FF15[00000000]              call[printf]
+   114 000000F2 83C408                      add esp, 4 * 2
+   115                                  
+   116 000000F5 68[10040000]                PUSH sir_p
+   117                                  
+   118 000000FA E870FFFFFF                  call print_numbers
+   119                                  
+   120 000000FF 68[28000000]                push sir_n
+   121                                  
+   122 00000104 E866FFFFFF                  call print_numbers
+   123                                  
+   124 00000109 6A00                    	push dword 0 
+   125 0000010B FF15[00000000]          	call [exit] 

@@ -1,0 +1,52 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, strchr, printf
+     5                                  import exit msvcrt.dll
+     6                                  import printf msvcrt.dll
+     7                                  import strchr msvcrt.dll
+     8                                  
+     9                                  segment data use32 class=data
+    10 00000000 6165696F754145494F-         sir db "aeiouAEIOU", 0
+    10 00000009 5500               
+    11 0000000B 706C6D696161616E67-     	sir2 db "plmiaaangrt", 0
+    11 00000014 727400             
+    12 00000017 3400000000000000        	caracter dd "4", 0
+    13 0000001F 25640A00                	decimal_format db "%d", 10,  0
+    14 00000023 00000000                	counter dd 0
+    15                                  
+    16                                  segment code use32 class=code
+    17                                  start:
+    18 00000000 BE[0B000000]            	mov ESI, sir2
+    19                                  
+    20                                  	my_loop:
+    21 00000005 803E00                  		CMP byte[ESI], 0
+    22 00000008 7429                    		JZ final
+    23 0000000A BB00000000              		mov EBX, 0
+    24 0000000F 8A1E                    		mov BL, byte[ESI];EBX o sa am codul ascii al caracterului
+    25                                  
+    26 00000011 53                      		push EBX
+    27 00000012 68[00000000]            		push sir
+    28 00000017 FF15[00000000]          		call [strchr]
+    29 0000001D 83C408                  		add esp, 4 * 2
+    30                                  		;in EAX am adresa daca am gasit
+    31                                  
+    32 00000020 46                      		INC ESI
+    33 00000021 83F800                  		cmp EAX, 0
+    34                                  
+    35 00000024 76DF                    		JBE my_loop
+    36                                  
+    37 00000026 A1[23000000]            		mov EAX, dword[counter]
+    38 0000002B 40                      		INC EAX
+    39 0000002C A3[23000000]            		MOV dword[counter], EAX
+    40 00000031 EBD2                    	jmp my_loop
+    41                                  	final:
+    42                                  
+    43                                  
+    44 00000033 FF35[23000000]          	push dword[counter]
+    45 00000039 68[1F000000]            	push decimal_format
+    46 0000003E FF15[00000000]          	call [printf]
+    47 00000044 83C408                  	add esp, 4 * 2
+    48                                  
+    49 00000047 6A00                    	push dword 0 
+    50 00000049 FF15[00000000]          	call [exit] 
