@@ -1,0 +1,4 @@
+123,kante cotirla, 123, 10
+1234,somesan eduard, 125, 10
+7654,bota mihnea, 789, 10
+54,pizda masi, 120, 7
