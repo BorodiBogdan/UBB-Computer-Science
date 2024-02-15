@@ -1,0 +1,13 @@
+---- Test 1 ----
+
+Base: 16
+New Base: 3
+Enter the number: AAA.BC15
+The result is: 10202010.201211121
+
+--- Test 2 ---
+
+Base: 9
+New Base: 2
+Enter the number: 7641235
+The result is: 1111101001010110101100
