@@ -1,0 +1,48 @@
+Why do we need 3 registers to manage the stack?
+
+Because in fact the role of, ESP, EBP is to always define the currently executing stack frame 
+
+SS - Stack segment - real adress of starting the stack segment - points to the real starting segment - register in the righ part of the processor
+
+ESP, EBP - Points to the currently executing stack frame
+
+
+4 segments:
+	code segments
+	stack segments
+	extra segments
+	data segments
+
+EAX - Accumulator
+EBX - The base register
+ECX - Counter register
+EDX - Data register
+ESP - Stack pointer
+EBP - Base pointer
+EDI - Destination index
+ESI - Source index
+
+to work with 3 string you must push to memory one
+
+
+----------------FLAG REGISTERS--------------------
+9 Flag registers
+
+CF - Carry flag(transport flag) - shows if in the last performed opperation(LPO) was a transport and 0 otherwise
+OF - Overflowflag
+
+-----------------------------------------------------------------------------------------------------------
+Q: Why the design was made in such a way that the size of the result must be the same size as the operand?
+A:
+-----------------------------------------------------------------------------------------------------------
+Q: Why do you think that the assembly language does not allow instructions with more then two operands?
+
+A: because we cant represeznt more then two operands on a bit
+-----------------------------------------------------------------------------------------------------------
+
+BASE 2 - MECHANISM FOR REPRESENTING NUMBERS ON THE COMPUTER
+BASE 16 - SAME(Easy to translate to base 2)
+
+ADC - Add carry flag
+ADC AH, 0
+

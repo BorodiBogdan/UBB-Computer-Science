@@ -1,0 +1,26 @@
+mov eax,[ebx + esp]
+
+esp can only be a base register in any order s - source ---> is a base
+
+offset spec = [base] + [index * scale] + [constant]
+
+
+
+don t forget about little endian -- the last byte is the first in the memory
+
+
+
+[] ---- direct adressing
+
+
+
+
+
+i) immediate mode
+ii) register mode
+iii) memorry addresing mode
+
+
+
+In any programming language any declared variable will have a fixed adress but moreover it's offset is always a constant determinable at assembly or compiled time
+
