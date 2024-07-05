@@ -1,0 +1,1 @@
+ g++ -Wall -g -o app main.cpp src/domain/domain.cpp src/repository/repository.cpp src/service/service.cpp src/ui/ui.cpp tests/test.cpp

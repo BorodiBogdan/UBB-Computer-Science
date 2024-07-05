@@ -1,0 +1,1 @@
+gcc -Wall -g -o app app.c src/controller/controller.c src/domain/domain.c src/domain/dynamicVector.c src/repository/repository.c src/ui/ui.c src/repository/undoRedoRepository.c tests/test.c
