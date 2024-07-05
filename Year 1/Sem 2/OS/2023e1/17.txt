@@ -1,0 +1,3 @@
+17. scrieti un mod de a preveni deadlock
+
+deadlock occurs when a process waits for another process, we can solve it sending a signal 

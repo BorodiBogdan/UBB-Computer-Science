@@ -1,0 +1,4 @@
+10. cate FIFO pot fi deschise de catre un fisier daca fiecare dintre acele FIFO-uri va avea capatul celalalt deschis de catre un alt proces?
+
+
+infinity

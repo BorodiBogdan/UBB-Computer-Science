@@ -1,0 +1,4 @@
+How many FIFOs can a process open for reading if the FIFOs are and will ever be used by other processes only for writing?
+
+solution:
+it depends, if we open the fifos for writing and reading in order we can open as many fifo's as the memory allows, if not we will eventually end up in an deadlock because one process will wait for the complementary action forever.

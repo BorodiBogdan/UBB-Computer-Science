@@ -1,0 +1,5 @@
+2. scrieti 2 grep uri care iau liniile care nu au numarul de caractere multiplu al lui 3
+
+
+grep -E -v '^(...)*$' test.txt
+grep -E '^(...)*.{1,2}$' test.txt

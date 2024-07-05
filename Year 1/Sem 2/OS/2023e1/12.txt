@@ -1,0 +1,12 @@
+12. definiti notiunea de sectiune critica
+
+in a program there can some resources that are shared amongs other concurrent threads or procceses, these resources can not be accesed andmodified by more thread at the same time because it can affect the data integrity, these code sections are protecte by syncronization mechanisms such as mutex, barriers and so on
+
+critical section -> lines of code that can not be accesed by multiple processes because it will screw up the programi
+
+
+pthread_mutex_lock(&mtx)
+nr++;
+pthread_mutex_unlock(&mtx)
+
+nr++ -> critical section

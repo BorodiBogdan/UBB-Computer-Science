@@ -1,0 +1,5 @@
+scrieti un awk care afiseaza liniile care au primul cuvant identic cu ultimul cuvant si al caror penultim cuvant are numar par de caractere
+
+awk '{if(NF > 1 && $1 == $NF && length($(NF - 1)) % 2 == 1){print $0}}'
+
+awk 'NF > 1 && $1 == $NF && length($(NF - 1)) % 2 == 0 {print $0}'

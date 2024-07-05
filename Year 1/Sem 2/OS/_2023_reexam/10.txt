@@ -1,0 +1,5 @@
+What is a "critical section"?
+
+solution:
+
+a critical section is a segment of code which is not permitted to be accesed from one or more threads or processes. This is because it contains non-atomic operations with multiple operations will lead to race conditions. To prevent this from happening, we can use different syncronization methods like mutexes.

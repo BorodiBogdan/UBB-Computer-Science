@@ -1,0 +1,14 @@
+. afisati ierarhia proceselor a urmatorului cod:
+for(int i = 0; i < 3; i++)
+    if (fork() != 0)
+        wait();
+
+
+C0: C01, C02, C03
+C01: C10, C11
+C10: C100
+C100: -
+C11: -
+C02: C020
+C020: -> -
+C03: -> -

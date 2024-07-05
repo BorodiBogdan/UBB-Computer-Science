@@ -1,0 +1,2 @@
+11. cand am dori sa folosim execl si cand am dori sa folosim execv?
+

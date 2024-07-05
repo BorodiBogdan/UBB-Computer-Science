@@ -1,0 +1,10 @@
+scrieti 5 moduri de a verifica daca un string este gol(cu test)
+
+test -z $A
+test $A=""
+test ${#A} -lt 1
+test ${#A} -eq 0
+test ${#A} -le 0
+test ! ${#a} -gt 0
+test $(echo $A | awk '{print length}') -eq 0
+

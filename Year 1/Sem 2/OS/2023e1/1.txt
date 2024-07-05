@@ -1,0 +1,3 @@
+scrieti un grep care ia grupurile de cate 2 cuvinte, separate de un singur spatiu, care sunt formate doar din litere mici si fiecare cuvant contine cel putin 2 vocale
+
+grep -E '\<[^aeiou]*[aeiou][^aeiou]*[aeiou]+\> \<[^aeiou]*[aeiou][^aeiou]*[aeiou]+\>' last.fake

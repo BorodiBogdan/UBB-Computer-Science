@@ -1,0 +1,8 @@
+9. schitati o implementare a functiilor popen si pclose
+
+
+FILE *fd = popen(myFile);
+
+while(read(fd, 1) > 0);
+
+pclose(fd);

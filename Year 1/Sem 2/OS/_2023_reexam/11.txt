@@ -1,0 +1,9 @@
+When would you use execv instead of execl?
+
+solution:
+
+We would use execv when our arguments are stored in an array. For example, when we want to use the arguments given in the command line as **argv, it would be better to user execv
+
+execv -> takes as arguments an array of chars(not const), it is better suitable for dynamic operations
+execv("", ARRAY);
+execl -> takes as arguments many const *char -> can be written by hand in the program, so if you already know the arguments

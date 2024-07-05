@@ -1,0 +1,1 @@
+19. daca avem B drept block size si A drept address size, cate adrese o sa aiba un double indirect dintr-un i-node?

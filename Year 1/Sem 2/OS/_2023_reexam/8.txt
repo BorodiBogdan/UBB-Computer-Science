@@ -1,0 +1,7 @@
+What will be the effect of replacing calls to pthread_mutex_lock with calls to sem_post?
+
+solution:
+
+race condition
+
+all threads will be able to acces the critical resource because sem_post let them stay in running state and the semaphore value will be incremented, so there will be no wait

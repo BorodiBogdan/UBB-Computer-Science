@@ -1,0 +1,5 @@
+What state transition will a process undergo when it calls sem_wait and under what conditions? Justify your answer.
+
+solution:
+if the semaphore's value is greater then 0 then the process will stay in running state
+the process will tranzit from running into waiting, after certain conditions are met the process will be in a ready state and after the scheduler will execute the process, it will be again in running state

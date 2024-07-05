@@ -1,0 +1,5 @@
+5. scrieti 3 moduri de a crea un fisier gol
+
+touch filename
+echo "" > a.txt
+echo "" >> a.txt

@@ -1,0 +1,4 @@
+18. prin ce stare(gen ready, wait, swap, etc) trece un proces cand apelam pthread_join?
+
+
+wait:

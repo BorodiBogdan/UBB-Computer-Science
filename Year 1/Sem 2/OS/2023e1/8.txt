@@ -1,0 +1,5 @@
+8. scrieti ce afiseaza codul:
+execlp(“expr”,”expr”,”a”,”+”,”1”);mut
+printf(“xyz\n”);
+
+error -> a not an integer

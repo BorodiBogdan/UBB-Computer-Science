@@ -1,0 +1,5 @@
+Explain why the file descriptor returned by popen must be closed with pclose instead of fclose.
+
+solution:
+
+Because by default fclose closes instantly , pclose is designed to wait for the proccess that is currently opened to finish and only then to close.

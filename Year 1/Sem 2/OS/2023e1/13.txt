@@ -1,0 +1,1 @@
+14. care sunt consecintele inlocuirii lui pthread_mutex_lock cu sem_post in cod?

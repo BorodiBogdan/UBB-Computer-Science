@@ -1,0 +1,7 @@
+Give three function calls that ensure mutual exclusion.
+
+solutin:
+
+pthread_mutex_lock
+pthread_mutex_unlock
+pthread_mutex_trylock
