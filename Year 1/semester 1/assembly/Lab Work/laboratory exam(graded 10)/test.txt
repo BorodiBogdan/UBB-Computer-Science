@@ -1,3 +1,0 @@
-10 3 10 7 5 6 5 3 4 6 4 10 7 10 3 7 5
-Sum of grades is: 105
-The difference of grades is: -85

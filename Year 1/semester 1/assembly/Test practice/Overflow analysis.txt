@@ -1,8 +1,0 @@
-CF(Carry flag) -> is the transport flag and it will be set to 1 if int the last LPO there was a carry outside the representation domain
-
-CF --> signals the unsigned overflow
-
-
-
-OF(Overflow flag)---> signals the signed overflow. If the result of the last performed LPO(considered in signed interpretation) didn t fit the reserved space, then
-the flag is set to 1 and set to 0 otherwise

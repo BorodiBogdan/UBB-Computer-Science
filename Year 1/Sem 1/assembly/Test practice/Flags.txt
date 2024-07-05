@@ -1,0 +1,30 @@
+-------------- Flags and their use --------------------
+CF(Carry Flag) - is the transport flag. It will be set to 1 if in the LPO there was a transport outside the representation domain of the obtained result and set to 0 otherwise.
+
+----------- EXAMPLE FOR CF --------------
+
+  1001 0011+   <---- CF set to 1(it does not fit)           CARRY FLAGS SIGNAL THE UNSIGNED OVERFLOW!!!!
+  0111 0011
+ ----------
+1 0000 0110
+
+
+
+-----------------------------------------
+
+
+PF(Parity flag) - It s value is set so that together with the bits 1 from the binary representations of the LPO's result an odd number of 1 digits to be obtained
+
+AF(Auxiliary flag) - shows the transport value from bit 3 to bit 4(incomplete)
+
+ZF(Zero flag) - is set to 1 if the result of the LPO was zero and 0 otherwise
+
+SF(Sign flag) - is set to 1 if the result of the LPO is a strictly negative number and is set to 0 otherwise
+
+TP(Trap flag) - is a debugging flag. If it is set to 1, then the machine stops after every instruction
+
+IF(Intrerrupt Flag) - If set to 1, intrerupts are allowed, if set to 0 interrupts will not be handled(more details on Vanceas course chapter 5)
+
+DF(Direction Flag) - for operating string instructors, if set to 0, then the string parsing will be performed in an ascending order(from the beginning to its end) and in descending(from end to beginning) order if set to 1
+
+OF(Overflow Flag) - flags the signed overflow. If the result LPO(considered in the signed interpretation) didn't fit the reserved space then OF will be set to 1 and will be set to 0 otherwise

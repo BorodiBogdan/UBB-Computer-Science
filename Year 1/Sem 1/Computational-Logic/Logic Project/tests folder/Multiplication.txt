@@ -1,0 +1,13 @@
+---- Test 1 ------
+
+Base: 2
+Enter the number: 100111
+Enter the number: 10110000
+The result is: 1101011010000
+
+---- Test 2 ------
+
+Base: 5
+Enter the number: 44444421
+Enter the number: 12311111
+The result is:1231110132422231

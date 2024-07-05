@@ -1,0 +1,57 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit              
+     6                                  
+     7                                  import exit msvcrt.dll    
+     8                                  
+     9                                  
+    10                                  segment data use32 class=data
+    11 00000000 EAB1                        A dw 1011000111101010b
+    12 00000002 ACF0                        B dw 1111000010101100b
+    13 00000004 00000000                    C dd 0
+    14                                  
+    15                                  ;Given the words A and B, compute the doubleword C as follows:
+    16                                  ;the bits 0-4 of C are the same as the bits 11-15 of A
+    17                                  ;the bits 5-11 of C have the value 1
+    18                                  ;the bits 12-15 of C are the same as the bits 8-11 of B
+    19                                  ;the bits 16-31 of C are the same as the bits of A
+    20                                  ;the result must be 1011 0001 1110 1010 0000 1111 1111 0110
+    21                                                     ;1011 0001 1110 1010 0000 1111 1111 0110
+    22                                                     
+    23                                  segment code use32 class=code
+    24                                      start:
+    25 00000000 B803000000                      MOV EAX, 3
+    26 00000005 C705[04000000]0000-             MOV dword[C], 0
+    26 0000000D 0000               
+    27                                          
+    28 0000000F BB00000000                      MOV EBX, 0
+    29 00000014 668B1D[00000000]                MOV BX, word[A]
+    30 0000001B 66C1EB0B                        SHR BX, 11
+    31 0000001F A1[04000000]                    MOV EAX, dword[C]
+    32 00000024 09D8                            OR EAX, EBX;the bits 0-4 of C are the same as the bits 11-15 of A
+    33                                          
+    34 00000026 BB00000000                      MOV EBX, 0
+    35 0000002B BB7F000000                      MOV EBX, 1111111b
+    36 00000030 C1E305                          SHL EBX, 5
+    37 00000033 09D8                            OR EAX, EBX;the bits 5-11 of C have the value 1
+    38                                          
+    39 00000035 BB00000000                      MOV EBX, 0
+    40 0000003A 668B1D[02000000]                MOV BX, word[B]
+    41 00000041 66C1E304                        SHL BX, 4
+    42 00000045 66C1EB0C                        SHR BX, 12
+    43 00000049 66C1E30C                        SHL BX, 12
+    44                                          
+    45 0000004D 09D8                            OR EAX, EBX;the bits 12-15 of C are the same as the bits 8-11 of B
+    46                                          
+    47 0000004F BB00000000                      MOV EBX, 0
+    48 00000054 668B1D[00000000]                MOV BX, word[A]
+    49 0000005B C1E310                          SHL EBX, 16
+    50 0000005E 09D8                            OR EAX,EBX
+    51                                          
+    52 00000060 A3[04000000]                    MOV dword[C], EAX
+    53                                          
+    54 00000065 6A00                            push    dword 0      
+    55                                          
+    56 00000067 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

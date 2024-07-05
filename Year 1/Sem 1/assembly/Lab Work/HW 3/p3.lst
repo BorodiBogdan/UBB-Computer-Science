@@ -1,0 +1,65 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    
+     9                                  
+    10                                  ;(c+b+a)-(d+d)
+    11                                  ;a - byte, b - word, c - double word, d - qword - Signed representation
+    12                                  segment data use32 class=data
+    13 00000000 F6                          a db -10
+    14 00000001 F9FF                        b dw -7
+    15 00000003 E6000000                    c dd 230
+    16 00000007 E803000000000000            d dq 1000
+    17                                  
+    18                                  ; our code starts here
+    19                                  segment code use32 class=code
+    20                                      start:
+    21 00000000 A0[00000000]                    MOV AL, [a]
+    22 00000005 6698                            cbw
+    23 00000007 660305[01000000]                ADD AX, [b]
+    24 0000000E 6699                            cwd
+    25                                          
+    26 00000010 6652                            PUSH DX
+    27 00000012 6650                            PUSH AX
+    28                                          
+    29 00000014 58                              POP EAX
+    30                                          
+    31 00000015 99                              cdq
+    32 00000016 0305[03000000]                  ADD EAX, [c]
+    33 0000001C 83D200                          ADC EDX, 0;a + c + d
+    34                                          
+    35 0000001F 52                              PUSH EDX
+    36 00000020 50                              PUSH EAX
+    37                                          
+    38 00000021 A1[07000000]                    MOV EAX, dword [d]
+    39 00000026 8B15[0B000000]                  MOV EDX, dword [d + 4]
+    40                                          
+    41 0000002C 0305[07000000]                  ADD EAX, dword [d]
+    42 00000032 1315[0B000000]                  ADC EDX, dword [d + 4]; d + d
+    43                                          
+    44 00000038 59                              POP ECX
+    45 00000039 5B                              POP EBX;EBX:ECX d + d
+    46                                          
+    47 0000003A 50                              PUSH EAX;adding a + b + c to stack
+    48 0000003B 52                              PUSH EDX
+    49                                          
+    50 0000003C 89DA                            MOV EDX, EBX
+    51 0000003E 89C8                            MOV EAX, ECX;EDX:EAX a + b + c
+    52                                          
+    53 00000040 5B                              POP EBX
+    54                                          
+    55 00000041 29D8                            SUB EAX, EBX;(a + b + c) - (d + d)
+    56                                          
+    57 00000043 5B                              POP EBX
+    58                                          
+    59 00000044 19D8                            SBB EAX, EBX;(a + b + c) - (d + d)
+    60                                          
+    61 00000046 99                              cdq
+    62                                          
+    63                                          ; exit(0)
+    64 00000047 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    65 00000049 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

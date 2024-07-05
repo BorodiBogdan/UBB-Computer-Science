@@ -1,0 +1,41 @@
+     1                                  bits 32 
+     2                                  global start        
+     3                                  
+     4                                  extern exit                
+     5                                  import exit msvcrt.dll    
+     6                                  
+     7                                  ;c-a-(b+a)+c
+     8                                  ;a - byte, b - word, c - double word, d - qword - Unsigned representation
+     9                                  
+    10                                  segment data use32 class=data
+    11 00000000 65000000                    c dd 101
+    12 00000004 0C                          a db 12
+    13 00000005 0A00                        b dw 10
+    14                                      
+    15                                  segment code use32 class=code
+    16                                      start:
+    17 00000000 A1[00000000]                    MOV EAX, [c]
+    18                                          
+    19 00000005 BB00000000                      MOV EBX, 0
+    20 0000000A 8A1D[04000000]                  MOV BL, [a]
+    21 00000010 29D8                            SUB EAX, EBX;c - a
+    22                                             
+    23 00000012 50                              PUSH EAX
+    24                                          
+    25 00000013 66A1[05000000]                  MOV AX, [b]
+    26 00000019 0205[04000000]                  ADD AL, [a]
+    27 0000001F 80D400                          ADC AH, 0;b + a
+    28                                              
+    29 00000022 BB00000000                      MOV EBX, 0
+    30 00000027 6689C3                          MOV BX, AX
+    31 0000002A 58                              POP EAX
+    32                                          
+    33 0000002B 29D8                            SUB EAX, EBX;c - a - (b + a)
+    34                                          
+    35 0000002D BA00000000                      MOV EDX, 0
+    36 00000032 0305[00000000]                  ADD EAX, [c]
+    37 00000038 83D200                          ADC EDX, 0
+    38                                          
+    39 0000003B 6A00                            push    dword 0     
+    40                                          
+    41 0000003D FF15[00000000]                  call    [exit]       

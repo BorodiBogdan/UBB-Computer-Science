@@ -1,0 +1,45 @@
+-----------scanf------------
+c -> scanf(const char * format, variable_address_1, ...);
+asm -> push variable_x, push format
+--------printf--------------
+c -> printf("%d", -17);
+asm - > push numar, push format
+-------fopen---------------
+c-> FILE * fopen(const char* file_name, const char * access_mode)
+asm-> push acces mode, push file_name
+-------fclose--------------
+c-> int fclose(FILE * descriptor)
+asm-> push dword[file_descriptor]
+-------fread---------------
+c-> int fread(void * str, int size, int count, FILE * stream)
+asm->	push dword[file_descriptor]
+	push count
+	push size
+	push buffer(where the information is stored)
+--------fprintf------------
+c-> int fprintf(FILE * stream, const char * format, <variable_1>, <constant_2>, <...>)
+asm-> push constant_n
+      .....
+      push variable_1
+      push format
+      push [file_descriptor]
+--------fscanf-------------
+c-> int fscanf(FILE *stream, const char *format, ...)
+asm-> push variable1 ... variable_N
+	push format
+	push [file_descriptor]
+
+
+
+Arguments of the fopen function:
+Access mode	Meaning	Description
+r	read	- Open file for reading. The file must exist.
+w	write	- If the file does not exist, it creates a new file with the given name and opens it for writing.
+- If a file with the given name exists, it opens it for writing. It overwrites the content of the file and starts writing from the beginning of the file.
+a	append	- If the file does not exist, it creates a new file and opens it for writing.
+- If a file with the given name exists, it opens it for writing. It does not overwrite the content, it continues writing at the end of the file.
+r+	read and write from/into existing file	- Open file for reading and writing. The file must exist.
+w+	read and write	- If the file does not exist, it creates a new file and opens it for reading and writing.
+- If a file with the given name exists, it opens it for reading and writing. It overwrites the content of the file and starts writing at the beginning of the file.
+a+	read and append	- If the file does not exist, it creates a new file and opens it for reading and writing.
+- If a file with the given name exists, it opens it for reading and writing. It does not overwrite the content, it continues writing at the end of the file.

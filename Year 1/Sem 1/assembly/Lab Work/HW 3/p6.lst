@@ -1,0 +1,84 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  
+     6                                  extern exit              
+     7                                  
+     8                                  import exit msvcrt.dll    
+     9                                  
+    10                                  ;x/2+100*(a+b)-3/(c+d)+e*e - signed
+    11                                  ;a,c-word; b,d-byte; e-doubleword; x-qword
+    12                                  segment data use32 class=data
+    13 00000000 6500                        a dw 101
+    14 00000002 87FF                        c dw -121
+    15 00000004 0A                          b db 10
+    16 00000005 88                          d db -120
+    17 00000006 FEFFFFFF                    e dd -2
+    18 0000000A 7FBFFCFFFFFFFFFF            x dq -213121
+    19                                      two equ 2
+    20                                      o_hundread equ 100
+    21                                  ; x/2+100*(a+b)-3/(c+d)+e*e
+    22                                  segment code use32 class=code
+    23                                      start:
+    24 00000000 A1[0A000000]                    MOV EAX, dword [x]
+    25 00000005 8B15[0E000000]                  MOV EDX, dword [x + 4];EAX:EDX = x-qword
+    26                                          
+    27 0000000B BB02000000                      MOV EBX, two
+    28                                          
+    29 00000010 F7FB                            IDIV EBX;now we have EAX:EDX / 2 in EAX and EAX:EDX % 2 in EDX
+    30                                          
+    31 00000012 50                              PUSH EAX;x / 2 is on the stack
+    32                                          
+    33 00000013 66A1[00000000]                  MOV AX, [a]
+    34 00000019 0205[04000000]                  ADD AL, [b]
+    35 0000001F 80D400                          ADC AH, 0
+    36                                          
+    37 00000022 66BB6400                        MOV BX, o_hundread
+    38                                              
+    39 00000026 66F7E3                          MUL BX;DX:AX = 100*(a+b)
+    40                                          
+    41 00000029 6652                            PUSH DX
+    42 0000002B 6650                            PUSH AX;lat 16 bits on the stack = 100*(a+b)
+    43                                          
+    44 0000002D 58                              POP EAX ; EAX = 100*(a+b)
+    45                                          
+    46 0000002E 89C3                            MOV EBX, EAX; EBX = 100*(a+b)
+    47                                          
+    48 00000030 58                              POP EAX;EAX = x/2
+    49                                          
+    50 00000031 01D8                            ADD EAX, EBX;EAX = x / 2 + 100*(a+b)
+    51                                          
+    52 00000033 50                              PUSH EAX; x / 2 + 100*(a+b) on the stack
+    53                                          
+    54 00000034 66BA0000                        MOV DX, 0
+    55 00000038 66B80300                        MOV AX, 3
+    56                                          
+    57 0000003C 668B1D[02000000]                MOV BX, [c]
+    58 00000043 021D[05000000]                  ADD BL, [d] 
+    59 00000049 80D700                          ADC BH, 0;we have c + d in BX
+    60                                          
+    61 0000004C 66F7FB                          IDIV BX;AX = 3 / (c + d)
+    62                                          
+    63 0000004F 6699                            cwd;DX:AX = 3 / (c + d)
+    64                                          
+    65 00000051 6652                            PUSH DX
+    66 00000053 6650                            PUSH AX
+    67 00000055 5B                              POP EBX;EBX = 3 / (c + d)
+    68                                          
+    69 00000056 58                              POP EAX
+    70 00000057 29D8                            SUB EAX, EBX;EAX = x / 2 + 100*(a+b) - 3 / (c + d)
+    71                                          
+    72 00000059 50                              PUSH EAX;EAX = x / 2 + 100*(a+b) - 3 / (c + d) on the stack
+    73                                          
+    74 0000005A A1[06000000]                    MOV EAX, [e]
+    75 0000005F F7E8                            IMUL EAX;EDX:EAX = e * e
+    76                                          
+    77 00000061 5B                              POP EBX; EBX = x / 2 + 100*(a+b) - 3 / (c + d)
+    78                                          
+    79 00000062 01D8                            ADD EAX, EBX
+    80 00000064 83D200                          ADC EDX, 0;EAX:EDX = x / 2 + 100*(a+b) - 3 / (c + d) + e * e
+    81                                          
+    82                                          
+    83 00000067 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    84 00000069 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

@@ -1,2 +1,0 @@
-size = 5
-apples = 6
