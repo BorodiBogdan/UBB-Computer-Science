@@ -1,0 +1,5 @@
+HR|Aceasta este descrierea lui HR
+PR|Aceasta este descrierea lui PR
+Dezvoltare|Aceasta este descrierea lui Dezvoltare
+Departament|Aceasta este descrierea lui Departament
+Management|Aceasta este descrierea lui Management

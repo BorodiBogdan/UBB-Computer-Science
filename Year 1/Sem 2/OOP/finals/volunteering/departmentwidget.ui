@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DepartMentWidget</class>
+ <widget class="QWidget" name="DepartMentWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>724</width>
+    <height>439</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>DepartMentWidget</string>
+  </property>
+  <widget class="QListWidget" name="volunteerList">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>40</y>
+     <width>211</width>
+     <height>351</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="unusignedVolunteerList">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>40</y>
+     <width>181</width>
+     <height>351</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="descriptionGroupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>221</width>
+     <height>371</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Descriere</string>
+   </property>
+   <widget class="QPlainTextEdit" name="departmentDescription">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>80</y>
+      <width>151</width>
+      <height>211</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="volunteersLabel">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>10</y>
+     <width>111</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Volunteers</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="unusignedVolunteersLabel">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>10</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Unassigned volunteers</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
