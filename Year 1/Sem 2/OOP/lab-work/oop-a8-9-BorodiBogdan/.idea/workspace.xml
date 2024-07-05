@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="1st_QT_Project" targetName="1st_QT_Project" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" GENERATION_OPTIONS="-DCMAKE_PREFIX_PATH=&quot;C:\Qt\6.7.0\mingw_64\lib\cmake&quot;" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9c9ff0a3-e940-4b40-9365-c8735e089f9f" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2023" />
+    <option name="minorVersion" value="3.4" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2gDulu9HAg0M2msKGZkBLJs6Qdc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;CMake Application.1st_QT_Project.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Debug.QT.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Bob/Documents/FMI - YEAR 1/Sem 2/OOP/QT Practice/1st QT Project/cmake-build-debug&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Bob\Documents\FMI - YEAR 1\Sem 2\OOP\QT Practice\1st QT Project\cmake-build-debug" />
+      <recent name="C:\Users\Bob\Documents\FMI - YEAR 1\Sem 2\OOP\QT Practice\1st QT Project\includes\domain" />
+      <recent name="C:\Users\Bob\Documents\FMI - YEAR 1\Sem 2\OOP\QT Practice\1st QT Project\includes\service" />
+      <recent name="C:\Users\Bob\Documents\FMI - YEAR 1\Sem 2\OOP\QT Practice\1st QT Project\includes\repository" />
+      <recent name="C:\Users\Bob\Documents\FMI - YEAR 1\Sem 2\OOP\QT Practice\1st QT Project\includes" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bob\Documents\FMI - YEAR 1\Sem 2\OOP\QT Practice\1st QT Project\includes" />
+      <recent name="C:\Users\Bob\Documents\FMI - YEAR 1\Sem 2\OOP\QT Practice\1st QT Project\src" />
+      <recent name="C:\Users\Bob\Documents\FMI - YEAR 1\Sem 2\OOP\QT Practice\1st QT Project\includes\gui" />
+      <recent name="C:\Users\Bob\Documents\FMI - YEAR 1\Sem 2\OOP\QT Practice\1st QT Project\src\gui" />
+    </key>
+  </component>
+  <component name="RunManager" selected="CMake Application.1st_QT_Project">
+    <configuration name="QT" type="CMakeListConfigurationType" factoryName="CMakeListConfigurationFactory" singleton="false">
+      <method v="2" />
+    </configuration>
+    <configuration name="1st_QT_Project" type="CMakeRunConfiguration" factoryName="Application" singleton="false" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="1st_QT_Project" TARGET_NAME="1st_QT_Project" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="1st_QT_Project" RUN_TARGET_NAME="1st_QT_Project">
+      <envs>
+        <env name="PATH" value="C:\Qt\6.7.0\mingw_64\bin" />
+      </envs>
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.1st_QT_Project" />
+      <item itemvalue="CMake Debug.QT" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9c9ff0a3-e940-4b40-9365-c8735e089f9f" name="Changes" comment="" />
+      <created>1715244623798</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715244623798</updated>
+      <workItem from="1715244624896" duration="9820000" />
+      <workItem from="1715261352178" duration="1525000" />
+      <workItem from="1715286314633" duration="9610000" />
+      <workItem from="1715331940164" duration="1785000" />
+      <workItem from="1715339532719" duration="9522000" />
+      <workItem from="1715349309798" duration="4133000" />
+      <workItem from="1715355432729" duration="1297000" />
+      <workItem from="1715356874476" duration="761000" />
+      <workItem from="1715361056422" duration="1952000" />
+      <workItem from="1715364938106" duration="819000" />
+      <workItem from="1715377547434" duration="4095000" />
+      <workItem from="1715421732740" duration="138000" />
+      <workItem from="1715427035194" duration="870000" />
+      <workItem from="1715427916792" duration="2644000" />
+      <workItem from="1715522735320" duration="1411000" />
+      <workItem from="1715539396080" duration="617000" />
+      <workItem from="1715591780434" duration="880000" />
+      <workItem from="1715692906108" duration="114000" />
+      <workItem from="1715695256660" duration="462000" />
+      <workItem from="1715700342970" duration="1761000" />
+      <workItem from="1715972229584" duration="4641000" />
+      <workItem from="1716111612582" duration="168000" />
+      <workItem from="1716137111151" duration="6055000" />
+      <workItem from="1716148433167" duration="1594000" />
+      <workItem from="1716156870407" duration="571000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
+  </component>
+</project>
