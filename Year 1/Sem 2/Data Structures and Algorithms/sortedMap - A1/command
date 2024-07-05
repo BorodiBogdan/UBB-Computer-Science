@@ -1,0 +1,1 @@
+g++ -g -o app App.cpp ExtendedTest.cpp ShortTest.cpp SMIterator.cpp SortedMap.cpp

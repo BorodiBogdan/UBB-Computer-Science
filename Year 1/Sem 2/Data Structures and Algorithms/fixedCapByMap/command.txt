@@ -1,0 +1,1 @@
+g++ -g -o app App.cpp ExtendedTest.cpp FixedCapBiMap.cpp FixedCapBiMapIterator.cpp ShortTest.cpp
