@@ -1,0 +1,60 @@
+replace_all([], _, _, []).
+replace_all([H|T], H, Repl, [Repl|R]):-
+    replace_all(T, H, Repl, R).
+replace_all([H|T], E, Repl, [H|R]):-
+    replace_all(T, E, Repl, R).
+
+isPrimeH(1,_,0).
+isPrimeH(0,_,0).
+isPrimeH(Element, D, 1):-
+    D * D > Element, !.
+isPrimeH(Element, D, R):-
+    Element mod D =\= 0,
+    D1 is D + 1,
+    isPrimeH(Element, D1, R).
+isPrimeH(Element, D, 0):-
+    Element mod D =:= 0.
+isPrime(Element, 0):-
+    Element =< 1, !.
+isPrime(Element, R):-
+    isPrimeH(Element, 2, R).
+
+duplicate_prime_elems([], []).
+duplicate_prime_elems([H|T], [H, H|R]):-
+    isPrime(H, G),
+    G =:= 1,
+    duplicate_prime_elems(T, R).
+duplicate_prime_elems([H|T], [H|R]):-
+    isPrime(H, G),
+    G =:= 0,
+    duplicate_prime_elems(T, R).
+
+duplicate_list_prime_elems([], []).
+duplicate_list_prime_elems([H|T], [G|R]):-
+    is_list(H),
+    duplicate_prime_elems(H, G),
+    duplicate_list_prime_elems(T, R).
+
+duplicate_list_prime_elems([H|T], [H|R]):-
+    \+ is_list(H),
+    duplicate_list_prime_elems(T, R).
+
+divisors(Number, D, []):-
+    D * D > Number, !.
+divisors(Number, D, [D]):-
+    D * D =:= Number, !.
+divisors(Number, D, [D, SD | R]):-
+    SD is Number / D,
+    Number mod D =:= 0,
+    D1 is D + 1,
+    divisors(Number, D1, R).
+divisors(Number, D, R):-
+    Number mod D =\= 0,
+    D1 is D + 1,
+    divisors(Number, D1, R).
+
+add_divisors([], []).
+add_divisors([H | T], Result) :-
+    divisors(H, 2, N1),
+    append([H | N1], Rest, Result),
+    add_divisors(T, Rest).

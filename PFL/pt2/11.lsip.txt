@@ -1,0 +1,124 @@
+;a) Determine the least common multiple of the numerical values of a nonlinear list.
+; Eg. (10 18 29 17 11 10). The list must have at least 3 atoms to fullfil this criteria.
+;c) Remove all occurrences of a maximum numerical element from a nonlinear list.
+;d) Write a function which returns the product of numerical even atoms from a list, to any level.
+
+;lcd = a * b / gcd(a, b)
+
+(defun _gcd(a b)
+  (cond
+    ( (> a b) (_gcd (- a b) b))
+    ( (< a b) (_gcd a (- b a)))
+    ( t a)
+  )
+)
+
+(defun _lcd(a b)
+  (cond
+    ((and (not (numberp a)) (not (numberp b))) 1)
+    ((not (numberp a)) b)
+    ((not (numberp b)) a)
+    (t (/ (* a b) (_gcd a b)))
+  )
+)
+
+(defun lcd_array(l1)
+  (cond
+    ((null l1) 1)
+    ((listp (car l1)) (_lcd (lcd_array (car l1)) (lcd_array (cdr l1))))
+    (t (_lcd (car l1) (lcd_array (cdr l1))))
+  )
+)
+
+(print (lcd_array '(1 3 'a (6 (7 21) 'a) 'b 'c)))
+
+
+;lcd (lcd (a b) c)
+
+;b) Write a function to test if a linear list of numbers has a "mountain" aspect (a list has a "mountain" 
+;aspect if the items increase to a certain point and then decreases. 
+
+;1 2 3 4 5 3 2 1
+;1 < 2 < 3 < 4 < 5 > 3 > 2 > 1
+; 1
+; 0
+
+(defun isMountain(l1 increasing fq)
+  (cond 
+    ( (null l1) nil)
+    ( (and (null (cdr l1)) (equal fq 1)) t)
+    ( (and (null (cdr l1)) (not (equal fq 1))) nil)
+    ( (and (< (car l1) (cadr l1)) (equal increasing 1)) (isMountain (cdr l1) increasing fq))
+    ( (and (> (car l1) (cadr l1)) (equal increasing 1)) (isMountain (cdr l1) 0 (+ fq 1)))
+    ( (and (> (car l1) (cadr l1)) (equal increasing 0)) (isMountain (cdr l1) increasing fq))
+    ( (and (< (car l1) (cadr l1)) (equal increasing 0)) (isMountain (cdr l1) 1 (+ fq 1)))
+  )
+)
+
+(defun verifyMountain(l1)
+  (cond 
+  ((< (car l1) (cadr l1)) (isMountain l1 1 0))
+  (t nil)
+  )
+)
+
+(print (verifyMountain '(5 4 3 2 1)))
+
+;;c) Remove all occurrences of a maximum numerical element from a nonlinear list.
+
+(defun maxi(a b)
+  ( cond
+    ( (and (numberp a) (numberp b)) (if (> a b) a b) )
+    ( (numberp a) a)
+    ( (numberp b) b)
+    (t nil)
+  )
+)
+
+(defun getMaximum(l1)
+  (cond 
+    ((null l1) 0)
+    ( (and (null (cdr l1)) (atom (car l1))) (car l1))
+    ((listp (car l1)) (maxi (getMaximum (car l1)) (getMaximum (cdr l1))))
+    (t (maxi (car l1) (getMaximum (cdr l1))))
+  )
+)
+
+(defun remove_element(l e)
+  (cond
+    ((null l) nil)
+    ((and (atom (car l)) (equal e (car l))) (remove_element (cdr l) e))
+    ((and (atom (car l)) (not (equal e (car l)))) (append  (list (car l)) (remove_element (cdr l) e)))
+    (t (append (list (remove_element (car l) e)) (remove_element (cdr l) e)))
+  )
+)
+
+(defun remove_maximum(l)
+  (cond
+    (t (remove_element l (getMaximum l)))
+  )
+)
+
+(print (remove_maximum '(1 (2 4 (3 102 (5 2) 3) 4 3) 3 2 5)))
+
+
+;d) Write a function which returns the product of numerical even atoms from a list, to any level.
+
+
+(defun getEvenProduct(l)
+  (cond
+    ((null l) 1)
+    ((listp (car l)) (* (getEvenProduct (car l)) (getEvenProduct (cdr l))))
+    ((equal (mod (car l) 2) 0) (* (car l) (getEvenProduct (cdr l))))
+    (t (getEvenProduct (cdr l)))
+  )
+)
+
+(print (getEvenProduct '(1 (2 (3 2 ())) 4 5)))
+
+
+
+
+
+
+

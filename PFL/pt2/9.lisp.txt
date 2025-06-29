@@ -1,0 +1,163 @@
+;) Write a function that merges two sorted linear lists and keeps double values.
+(defun mergeLists(l1 l2)
+  (cond
+    ((null l2) l1)
+    ((null l1) l2)
+    ((<= (car l1) (car l2)) (append (list (car l1)) (mergeLists (cdr l1) l2)))
+    ((< (car l2) (car l1)) (append (list (car l2)) (mergeLists l1 (cdr l2))))
+  )
+)
+
+(print (mergeLists '(1 2 3 4 5 6) '(1 2 34 44 52)))
+
+;b) Write a function to replace an element E by all elements of a list L1 at all levels of a given list L.
+;!NB Use const
+
+(defun replaceE(E L1 L)
+  (cond
+    ((null L) nil)
+    ((equal E (car L)) 
+      (append L1 (replaceE E L1 (cdr L))))
+    ((listp (car L)) 
+      (append (list (replaceE E L1 (car L))) (replaceE E L1 (cdr L))))
+    (t (append (list (car L)) (replaceE E L1 (cdr L))))
+  )
+)
+
+(print (replaceE 2 '(1 2 3) '(2 5 5 5 5 2 5 5 5 5 2)))
+
+;c) Write a function to determines the sum of two numbers in list representation, and returns the 
+;corresponding decimal number, without transforming the representation of the number from list to 
+;number.
+
+
+;1 2 3
+;1 2 3 4
+
+(defun reverseList(l)
+  (cond
+    ((null l) nil)
+    ((null (cdr l)) (list (car l)))
+    (t (append (reverseList (cdr l)) (list (car l))))
+  )
+)
+
+(print (reverseList '(1 2 3 1 2 3 5)))
+
+(defun calcDigit(l r c)
+  (cond
+    ((null l)(mod (+ r c) 10))
+    ((null r)(mod (+ l c) 10))
+    (t (mod (+ l c r) 10))
+  )
+)
+
+(defun calcCarry(l r c)
+  (cond
+    ((null l)(floor (+ r c) 10))
+    ((null r)(floor (+ l c) 10))
+    (t (floor (+ l c r) 10))
+  )
+)
+
+(defun calcSumHelper(l1 l2 c)
+  (cond
+    ((and (null l1)(null l2)) (if(= c 1) 1 0))
+    (t (+ (calcDigit (car l1) (car l2) c) (* (calcSumHelper (cdr l1) (cdr l2) (calcCarry (car l1) (car l2) c) ) 10)))
+  )
+)
+
+(defun calcSum(l1 l2)
+  (cond
+    (t (calcSumHelper (reverseList l1) (reverseList l2) 0))
+  )
+)
+
+(print (calcSum '(9 2 3) '(1 1 2 3)))
+; Write a function to return the greatest common divisor of all numbers in a linear list.
+
+(defun mygcd(a b)
+  (cond
+    ((and (not (numberp a)) (not (numberp b))) nil)
+    ((not (numberp a)) b)
+    ((not (numberp b)) a)
+    ((> a b) (gcd (- a b) b))
+    ((< a b) (gcd a (- b a)))
+    (t (a))
+  )
+)
+
+(defun array-gcd(l1)
+  (cond
+    ((null l1) nil)
+    ((null (cdr l1)) (car l1))
+    (t (mygcd (car l1) (array-gcd (cdr l1))))
+  )
+)
+(print (array-gcd '(24 16 2 A B 72)))
+
+;b) Write a function to return an association list with the two lists given as parameters. 
+ ;Example: (A B C) (X Y Z) --> ((A.X) (B.Y) (C.Z)).
+ 
+ 
+(defun assocList(l1 l2)
+  (cond 
+    ((and (null l1) (null l2)) nil)
+    ((null l1) 
+      (cons (cons nil (car l2)) (assocList l1 (cdr l2))
+    ))
+    ((null l2) 
+      (cons (cons (car l1) nil) (assocList (cdr l1) l2)
+    ))
+    (t ( cons (cons (car l1) (car l2)) (assocList (cdr l1) (cdr l2))))
+  )
+)
+
+
+(print (assocList '(A B C) '(X Y Z z f s)))
+(print (cons 2 (cons 12 2)))
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

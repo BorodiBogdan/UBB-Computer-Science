@@ -1,0 +1,64 @@
+% Specifications:
+% generate_parentheses(Open, Close, Result):
+% - Open (input): Number of open parentheses available to add.
+% - Close (input): Number of close parentheses available to add.
+% - Result (output): A valid list of parentheses.
+
+% generate_parentheses_n(N, Result):
+% - N (input): Total number of parentheses (must be even).
+% - Result (output): A valid list of parentheses with N elements.
+
+% Flow model:
+% - generate_parentheses(+,+,-)
+% - generate_parentheses_n(+,-)
+
+% Base case: A valid sequence with no parentheses is an empty list.
+generate_parentheses(0, 0, []) :- !.
+
+% Recursive case: Add an open parenthesis if there are open parentheses remaining.
+generate_parentheses(Open, Close, ['(' | Rest]) :-
+    Open > 0,
+    Open1 is Open - 1,
+    generate_parentheses(Open1, Close, Rest).
+
+% Recursive case: Add a close parenthesis if there are more close parentheses remaining.
+generate_parentheses(Open, Close, [')' | Rest]) :-
+    Close > Open,
+    Close1 is Close - 1,
+    generate_parentheses(Open, Close1, Rest).
+
+% Wrapper to start the generation process with N open and close parentheses.
+generate_parentheses_n(N, Result) :-
+    N mod 2 =:= 0,                  % N must be even
+    OpenClose is N // 2,
+    generate_parentheses(OpenClose, OpenClose, Result).
+
+% Test cases
+
+test1() :-
+    generate_parentheses_n(0, Result),
+    assertion(Result == []).
+
+test2() :-
+    generate_parentheses_n(2, Result),
+    assertion(Result == ['(', ')']).
+
+test3() :-
+    generate_parentheses_n(4, Result),
+    assertion(Result == ['(', '(', ')', ')']).
+
+test4() :-
+    findall(Result, generate_parentheses_n(6, Result), Results),
+    assertion(Results == [
+        ['(', '(', '(', ')', ')', ')'],
+        ['(', '(', ')', '(', ')', ')'],
+        ['(', '(', ')', ')', '(', ')'],
+        ['(', ')', '(', '(', ')', ')'],
+        ['(', ')', '(', ')', '(', ')']
+    ]).
+
+testAll() :-
+    test1(),
+    test2(),
+    test3(),
+    test4().
