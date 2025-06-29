@@ -1,0 +1,58 @@
+% max_position
+% max_position(List, MaxPos) - Finds the position of the maximum element in List.
+% Parameters:
+% - List: The input list of elements.
+% - MaxPos: The position of the maximum element (1-based index).
+max_position(List, MaxPos) :-
+    max_position(List, 1, 1, -inf, MaxPos).
+
+max_position([], _, MaxPos, _, MaxPos).
+
+max_position([H|T], Index, _, MaxValue, MaxPos) :-
+    H > MaxValue,
+    NextIndex is Index + 1,
+    max_position(T, NextIndex, Index, H, MaxPos).
+
+max_position([H|T], Index, MaxIndex, MaxValue, MaxPos) :-
+    H =< MaxValue,
+    NextIndex is Index + 1,
+    max_position(T, NextIndex, MaxIndex, MaxValue, MaxPos).
+
+
+% replace_sublists
+% replace_sublists(List, Result) - Replaces sublists in List with the position of their maximum element.
+% Parameters:
+% - List: The input heterogeneous list containing integers and lists.
+% - Result: The transformed list where each sublist is replaced with the position of its maximum element.
+replace_sublists([], []).
+
+replace_sublists([H|T], [MaxPos|Result]) :-
+    is_list(H),
+    max_position(H, MaxPos),
+    replace_sublists(T, Result).
+
+replace_sublists([H|T], [N|Result]) :-
+    \+ is_list(H),
+    N is H + 1,
+    replace_sublists(T, Result).
+
+% Test cases for max_position
+testMaxPosition :-
+    max_position([3, 1, 4, 1, 5], 5),
+    max_position([10, 20, 30, 25, 15], 3),
+    max_position([-3, -1, -4, -2], 2),
+    max_position([7], 1),
+    max_position([5, 5, 5, 5], 1).
+
+% Test cases for replace_sublists
+testReplaceSublists :-
+    replace_sublists([], []),
+    replace_sublists([1, [3, 1, 4, 1, 5], 6, [10, 20, 15]], [1, 5, 6, 2]),
+    replace_sublists([1, 2, 3], [1, 2, 3]),
+    replace_sublists([[7, 5, 8, 3], [2, 9, 3], 4, [1, 2, 3, 4]], [3, 2, 4, 4]),
+    replace_sublists([[1], [10, 20, 30, 25, 15], [5, 5, 5]], [1, 3, 1]).
+
+% Run all tests
+testAllFunctions :-
+    testMaxPosition,
+    testReplaceSublists.

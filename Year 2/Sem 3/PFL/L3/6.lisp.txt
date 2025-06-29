@@ -1,0 +1,76 @@
+;;; Function: max-in-list
+;;; Purpose: Find the maximum numeric value in a potentially nested list.
+;;; Parameters: 
+;;;   lst - A potentially nested list containing numbers and possibly other data types.
+;;; Flow:
+;;;   1. Checks if the list is empty or contains no numeric items, returns -1.
+;;;   2. Recursively processes each element:
+;;;      a. If it's a sublist, applies max after recursively finding max in each sublist.
+;;;      b. If it's a number, returns the number.
+;;;      c. Otherwise, ignores non-numeric data by returning -1.
+;;; lst -> input
+(defun max-in-list (lst)
+  (cond 
+    ((null lst) -1)
+    ((listp lst) (apply #'max (mapcar #'max-in-list lst)))
+    ((numberp lst) lst)
+    (t -1)
+  )  
+)
+
+; Example usage:
+(print (max-in-list '(3 (5 2) 9 23 'a 'b ((4) 6) 7 8)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
