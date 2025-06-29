@@ -1,0 +1,260 @@
+Id: 1
+Execution stack: 
+(bool a; (int v; (a = true; (if(a){v = 2}else{v = 3}; print(v)))))
+Symbol table: 
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+bool a
+(int v; (a = true; (if(a){v = 2}else{v = 3}; print(v))))
+Symbol table: 
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+bool a
+(int v; (a = true; (if(a){v = 2}else{v = 3}; print(v))))
+Symbol table: 
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+(int v; (a = true; (if(a){v = 2}else{v = 3}; print(v))))
+Symbol table: 
+a -> false
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+(int v; (a = true; (if(a){v = 2}else{v = 3}; print(v))))
+Symbol table: 
+a -> false
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+int v
+(a = true; (if(a){v = 2}else{v = 3}; print(v)))
+Symbol table: 
+a -> false
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+int v
+(a = true; (if(a){v = 2}else{v = 3}; print(v)))
+Symbol table: 
+a -> false
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+(a = true; (if(a){v = 2}else{v = 3}; print(v)))
+Symbol table: 
+a -> false
+v -> 0
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+(a = true; (if(a){v = 2}else{v = 3}; print(v)))
+Symbol table: 
+a -> false
+v -> 0
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+a = true
+(if(a){v = 2}else{v = 3}; print(v))
+Symbol table: 
+a -> false
+v -> 0
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+a = true
+(if(a){v = 2}else{v = 3}; print(v))
+Symbol table: 
+a -> false
+v -> 0
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+(if(a){v = 2}else{v = 3}; print(v))
+Symbol table: 
+a -> true
+v -> 0
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+(if(a){v = 2}else{v = 3}; print(v))
+Symbol table: 
+a -> true
+v -> 0
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+if(a){v = 2}else{v = 3}
+print(v)
+Symbol table: 
+a -> true
+v -> 0
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+if(a){v = 2}else{v = 3}
+print(v)
+Symbol table: 
+a -> true
+v -> 0
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+v = 2
+print(v)
+Symbol table: 
+a -> true
+v -> 0
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+v = 2
+print(v)
+Symbol table: 
+a -> true
+v -> 0
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+print(v)
+Symbol table: 
+a -> true
+v -> 2
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+print(v)
+Symbol table: 
+a -> true
+v -> 2
+Output list: 
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+
+Id: 1
+Execution stack: 
+Symbol table: 
+a -> true
+v -> 2
+Output list: 
+2
+File table:
+Heap memory:
+Lock Table:
+
+Latch Table:
+

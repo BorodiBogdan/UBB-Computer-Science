@@ -1,0 +1,110 @@
+
+Execution Stack:
+(int a; (int b; (a = 2 + 3 * 5; (b = a + 1; print(b)))))
+Heap:
+
+Symbol Table:
+
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+int a
+(int b; (a = 2 + 3 * 5; (b = a + 1; print(b))))
+Heap:
+
+Symbol Table:
+
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+(int b; (a = 2 + 3 * 5; (b = a + 1; print(b))))
+Heap:
+
+Symbol Table:
+a --> 0
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+int b
+(a = 2 + 3 * 5; (b = a + 1; print(b)))
+Heap:
+
+Symbol Table:
+a --> 0
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+(a = 2 + 3 * 5; (b = a + 1; print(b)))
+Heap:
+
+Symbol Table:
+a --> 0
+b --> 0
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+a = 2 + 3 * 5
+(b = a + 1; print(b))
+Heap:
+
+Symbol Table:
+a --> 0
+b --> 0
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+(b = a + 1; print(b))
+Heap:
+
+Symbol Table:
+a --> 17
+b --> 0
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+b = a + 1
+print(b)
+Heap:
+
+Symbol Table:
+a --> 17
+b --> 0
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+print(b)
+Heap:
+
+Symbol Table:
+a --> 17
+b --> 18
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+
+Heap:
+
+Symbol Table:
+a --> 17
+b --> 18
+Output:
+18
+--------------------------------------------------

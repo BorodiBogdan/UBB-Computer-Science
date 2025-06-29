@@ -1,0 +1,33 @@
+Common Format Characters:
+Integer Types:
+
+'b' - Signed char (1 byte)
+'B' - Unsigned char (1 byte)
+'h' - Short (2 bytes)
+'H' - Unsigned short (2 bytes)
+'i' - Integer (4 bytes)
+'I' - Unsigned integer (4 bytes)
+'l' - Long (4 bytes)
+'L' - Unsigned long (4 bytes)
+'q' - Long long (8 bytes)
+'Q' - Unsigned long long (8 bytes)
+Floating-Point Types:
+
+'f' - Float (4 bytes)
+'d' - Double (8 bytes)
+Characters and Strings:
+
+'c' - Char (1 byte)
+'s' - String (variable length, e.g., '10s' for a 10-byte string)
+Boolean:
+
+'?' - Boolean (1 byte)
+Padding:
+
+'x' - Pad byte (no value)
+Byte Order, Size, and Alignment Prefixes:
+'@' - Native byte order, native size, native alignment (default)
+'=' - Native byte order, standard size, no alignment
+'<' - Little-endian, standard size
+'>' - Big-endian, standard size
+'!' - Network (big-endian) byte order

@@ -1,0 +1,137 @@
+
+Execution Stack:
+(Ref int v; (New(v, 20); (Ref Ref int a; (New(a, v); (New(v, 30); print(readFromHeap(readFromHeap(a))))))))
+Heap:
+
+Symbol Table:
+
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+Ref int v
+(New(v, 20); (Ref Ref int a; (New(a, v); (New(v, 30); print(readFromHeap(readFromHeap(a)))))))
+Heap:
+
+Symbol Table:
+
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+(New(v, 20); (Ref Ref int a; (New(a, v); (New(v, 30); print(readFromHeap(readFromHeap(a)))))))
+Heap:
+
+Symbol Table:
+v --> (0, int)
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+New(v, 20)
+(Ref Ref int a; (New(a, v); (New(v, 30); print(readFromHeap(readFromHeap(a))))))
+Heap:
+
+Symbol Table:
+v --> (0, int)
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+(Ref Ref int a; (New(a, v); (New(v, 30); print(readFromHeap(readFromHeap(a))))))
+Heap:
+1 --> 20
+Symbol Table:
+v --> (1, int)
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+Ref Ref int a
+(New(a, v); (New(v, 30); print(readFromHeap(readFromHeap(a)))))
+Heap:
+1 --> 20
+Symbol Table:
+v --> (1, int)
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+(New(a, v); (New(v, 30); print(readFromHeap(readFromHeap(a)))))
+Heap:
+1 --> 20
+Symbol Table:
+a --> (0, Ref int)
+v --> (1, int)
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+New(a, v)
+(New(v, 30); print(readFromHeap(readFromHeap(a))))
+Heap:
+1 --> 20
+Symbol Table:
+a --> (0, Ref int)
+v --> (1, int)
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+(New(v, 30); print(readFromHeap(readFromHeap(a))))
+Heap:
+1 --> 20
+2 --> (1, int)
+Symbol Table:
+a --> (2, Ref int)
+v --> (1, int)
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+New(v, 30)
+print(readFromHeap(readFromHeap(a)))
+Heap:
+1 --> 20
+2 --> (1, int)
+Symbol Table:
+a --> (2, Ref int)
+v --> (1, int)
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+print(readFromHeap(readFromHeap(a)))
+Heap:
+1 --> 20
+2 --> (1, int)
+3 --> 30
+Symbol Table:
+a --> (2, Ref int)
+v --> (3, int)
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+
+Heap:
+1 --> 20
+2 --> (1, int)
+3 --> 30
+Symbol Table:
+a --> (2, Ref int)
+v --> (3, int)
+Output:
+20
+--------------------------------------------------

@@ -1,0 +1,105 @@
+
+Execution Stack:
+(Ref int v; (New(v, 20); (print(readFromHeap(v)); (WriteToHeap(v, 30); print(readFromHeap(v) + 5)))))
+Heap:
+
+Symbol Table:
+
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+Ref int v
+(New(v, 20); (print(readFromHeap(v)); (WriteToHeap(v, 30); print(readFromHeap(v) + 5))))
+Heap:
+
+Symbol Table:
+
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+(New(v, 20); (print(readFromHeap(v)); (WriteToHeap(v, 30); print(readFromHeap(v) + 5))))
+Heap:
+
+Symbol Table:
+v --> (0, int)
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+New(v, 20)
+(print(readFromHeap(v)); (WriteToHeap(v, 30); print(readFromHeap(v) + 5)))
+Heap:
+
+Symbol Table:
+v --> (0, int)
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+(print(readFromHeap(v)); (WriteToHeap(v, 30); print(readFromHeap(v) + 5)))
+Heap:
+1 --> 20
+Symbol Table:
+v --> (1, int)
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+print(readFromHeap(v))
+(WriteToHeap(v, 30); print(readFromHeap(v) + 5))
+Heap:
+1 --> 20
+Symbol Table:
+v --> (1, int)
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+(WriteToHeap(v, 30); print(readFromHeap(v) + 5))
+Heap:
+1 --> 20
+Symbol Table:
+v --> (1, int)
+Output:
+20
+--------------------------------------------------
+
+Execution Stack:
+WriteToHeap(v, 30)
+print(readFromHeap(v) + 5)
+Heap:
+1 --> 20
+Symbol Table:
+v --> (1, int)
+Output:
+20
+--------------------------------------------------
+
+Execution Stack:
+print(readFromHeap(v) + 5)
+Heap:
+1 --> 30
+Symbol Table:
+v --> (1, int)
+Output:
+20
+--------------------------------------------------
+
+Execution Stack:
+
+Heap:
+1 --> 30
+Symbol Table:
+v --> (1, int)
+Output:
+20
+35
+--------------------------------------------------

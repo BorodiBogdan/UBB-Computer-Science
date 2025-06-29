@@ -1,0 +1,300 @@
+
+Execution Stack:
+(int v; (v = 4; (While (v > 0) { (print(v); v = v - 1) }; print(v))))
+Heap:
+
+Symbol Table:
+
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+int v
+(v = 4; (While (v > 0) { (print(v); v = v - 1) }; print(v)))
+Heap:
+
+Symbol Table:
+
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+(v = 4; (While (v > 0) { (print(v); v = v - 1) }; print(v)))
+Heap:
+
+Symbol Table:
+v --> 0
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+v = 4
+(While (v > 0) { (print(v); v = v - 1) }; print(v))
+Heap:
+
+Symbol Table:
+v --> 0
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+(While (v > 0) { (print(v); v = v - 1) }; print(v))
+Heap:
+
+Symbol Table:
+v --> 4
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 4
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+(print(v); v = v - 1)
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 4
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+print(v)
+v = v - 1
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 4
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+v = v - 1
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 4
+Output:
+4
+--------------------------------------------------
+
+Execution Stack:
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 3
+Output:
+4
+--------------------------------------------------
+
+Execution Stack:
+(print(v); v = v - 1)
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 3
+Output:
+4
+--------------------------------------------------
+
+Execution Stack:
+print(v)
+v = v - 1
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 3
+Output:
+4
+--------------------------------------------------
+
+Execution Stack:
+v = v - 1
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 3
+Output:
+4
+3
+--------------------------------------------------
+
+Execution Stack:
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 2
+Output:
+4
+3
+--------------------------------------------------
+
+Execution Stack:
+(print(v); v = v - 1)
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 2
+Output:
+4
+3
+--------------------------------------------------
+
+Execution Stack:
+print(v)
+v = v - 1
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 2
+Output:
+4
+3
+--------------------------------------------------
+
+Execution Stack:
+v = v - 1
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 2
+Output:
+4
+3
+2
+--------------------------------------------------
+
+Execution Stack:
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 1
+Output:
+4
+3
+2
+--------------------------------------------------
+
+Execution Stack:
+(print(v); v = v - 1)
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 1
+Output:
+4
+3
+2
+--------------------------------------------------
+
+Execution Stack:
+print(v)
+v = v - 1
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 1
+Output:
+4
+3
+2
+--------------------------------------------------
+
+Execution Stack:
+v = v - 1
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 1
+Output:
+4
+3
+2
+1
+--------------------------------------------------
+
+Execution Stack:
+While (v > 0) { (print(v); v = v - 1) }
+print(v)
+Heap:
+
+Symbol Table:
+v --> 0
+Output:
+4
+3
+2
+1
+--------------------------------------------------
+
+Execution Stack:
+print(v)
+Heap:
+
+Symbol Table:
+v --> 0
+Output:
+4
+3
+2
+1
+--------------------------------------------------
+
+Execution Stack:
+
+Heap:
+
+Symbol Table:
+v --> 0
+Output:
+4
+3
+2
+1
+0
+--------------------------------------------------

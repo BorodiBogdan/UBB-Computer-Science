@@ -1,0 +1,63 @@
+
+Execution Stack:
+(string varf; (varf = test.in; (openFile varf; (int varc; (readFile varf into variable varc; (print(varc); (readFile varf into variable varc; (print(varc); closeFile varf))))))))
+Heap:
+
+Symbol Table:
+
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+string varf
+(varf = test.in; (openFile varf; (int varc; (readFile varf into variable varc; (print(varc); (readFile varf into variable varc; (print(varc); closeFile varf)))))))
+Heap:
+
+Symbol Table:
+
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+(varf = test.in; (openFile varf; (int varc; (readFile varf into variable varc; (print(varc); (readFile varf into variable varc; (print(varc); closeFile varf)))))))
+Heap:
+
+Symbol Table:
+varf --> 
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+varf = test.in
+(openFile varf; (int varc; (readFile varf into variable varc; (print(varc); (readFile varf into variable varc; (print(varc); closeFile varf))))))
+Heap:
+
+Symbol Table:
+varf --> 
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+(openFile varf; (int varc; (readFile varf into variable varc; (print(varc); (readFile varf into variable varc; (print(varc); closeFile varf))))))
+Heap:
+
+Symbol Table:
+varf --> test.in
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+openFile varf
+(int varc; (readFile varf into variable varc; (print(varc); (readFile varf into variable varc; (print(varc); closeFile varf)))))
+Heap:
+
+Symbol Table:
+varf --> test.in
+Output:
+
+--------------------------------------------------

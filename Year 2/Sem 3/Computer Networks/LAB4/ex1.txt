@@ -1,0 +1,62 @@
+
+Execution Stack:
+(int v; (v = 2; print(v)))
+Heap:
+
+Symbol Table:
+
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+int v
+(v = 2; print(v))
+Heap:
+
+Symbol Table:
+
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+(v = 2; print(v))
+Heap:
+
+Symbol Table:
+v --> 0
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+v = 2
+print(v)
+Heap:
+
+Symbol Table:
+v --> 0
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+print(v)
+Heap:
+
+Symbol Table:
+v --> 2
+Output:
+
+--------------------------------------------------
+
+Execution Stack:
+
+Heap:
+
+Symbol Table:
+v --> 2
+Output:
+2
+--------------------------------------------------
