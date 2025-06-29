@@ -1,0 +1,22 @@
+C:\Mac\Home\Documents\sem4UBB\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Mac\Home\Documents\sem4UBB\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Mac\Home\Documents\sem4UBB\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Mac\Home\Documents\sem4UBB\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Mac\Home\Documents\sem4UBB\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Mac\Home\Documents\sem4UBB\dbms\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Mac\Home\Documents\sem4UBB\dbms\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Mac\Home\Documents\sem4UBB\dbms\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Mac\Home\Documents\sem4UBB\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Mac\Home\Documents\sem4UBB\dbms\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Mac\Home\Documents\sem4UBB\dbms\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\scenarios.config
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab3\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\scenarios.config
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab3\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab3\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab3\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab3\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab3\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab3\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab3\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab3\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab3\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab3\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

@@ -1,0 +1,10 @@
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab2\Lab2\bin\Debug\Lab2.exe.config
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab2\Lab2\bin\Debug\Lab2.exe
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab2\Lab2\bin\Debug\Lab2.pdb
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab2\Lab2\obj\Debug\Lab2.csproj.AssemblyReference.cache
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab2\Lab2\obj\Debug\Lab2.Form1.resources
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab2\Lab2\obj\Debug\Lab2.Properties.Resources.resources
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab2\Lab2\obj\Debug\Lab2.csproj.GenerateResource.cache
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab2\Lab2\obj\Debug\Lab2.csproj.CoreCompileInputs.cache
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab2\Lab2\obj\Debug\Lab2.exe
+C:\Users\Bob\Documents\FMI - YEAR 1\Sem 4\DMBS\Lab2\Lab2\obj\Debug\Lab2.pdb
